@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/08 12:36:24 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/08 12:39:00 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-/* Includes */
-# include "lib.h"
-# include "colors.h"
-# include "define.h"
-# include "typedef.h"
+int	ft_free_game(t_game *game)
+{
+	(void)game;
+	return (1);
+}
 
-#endif
+int	ft_exit(t_game *game, t_error error, char *msg)
+{
+	if (error)
+	{
+		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
+	}
+	fr_free_game(game);
+	return (ext(error));
+}

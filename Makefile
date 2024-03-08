@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/08 11:34:13 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/08 12:09:08 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ BLINK			=	\033[5m
 REVERSE			=	\033[7m
 
 # OS
-OS				=	$(shell uname)
+PLATFORM		=	$(shell uname -s)
 
 # **************************************************************************** #
 #                                   PROGRAM                                    #
@@ -44,6 +44,10 @@ OS				=	$(shell uname)
 
 NAME			=	cub3D
 
+# If OS is windows, add .exe to the name
+ifeq ($(OS), Windows_NT)
+	NAME := $(addsuffix .exe, $(NAME))
+endif
 # **************************************************************************** #
 #                                   COMPILER                                   #
 # **************************************************************************** #
@@ -52,7 +56,7 @@ CC				=	cc
 RM				=	rm -rf
 MF 				=	Makefile
 CFLAGS			=	-Wall -Wextra -Werror -g3 -MMD -MP
-ifeq ($(OS), Darwin)
+ifeq ($(PLATFORM), Darwin)
     CFLAGS		+=	-Imlx
 endif
 
@@ -92,9 +96,9 @@ DEPS			=	$(OBJS:.o=.d)
 LDLIBS			=	-lft
 
 # MLX
-ifeq ($(OS), Darwin)
+ifeq ($(PLATFORM), Darwin)
 	MLX_DIR 	=	./mlx-opengl
-	MLX_FLAGS	=	-framework OpenGL -framework Appkit -l z
+	MLX_FLAGS	=	-framework OpenGL -framework Appkit -lz
 	MLX_PATH 	=	$(MLX_DIR)/libmlx.a
 else
 	MLX_DIR 	=	./mlx-linux

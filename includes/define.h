@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:03:17 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/08 11:31:24 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/08 12:26:41 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,29 @@
 # elif __linux__
 #  define OS "linux"
 # endif
+
+/* ************************************************************************** */
+/*                                    ERROR                                   */
+/* ************************************************************************** */
+
+/* Error values */
+typedef enum e_error
+{
+	ERR_ARGS = 1,
+	ERR_MAP,
+	ERR_MALLOC,
+	ERR_MLX,
+	ERR_FILE,
+	ERR_TEXTURE,
+	ERR_PLAYER,
+	ERR_EXIT,
+	ERR_COINS,
+	ERR_ENEMY,
+	ERR_WEAPON,
+	ERR_IMG,
+	ERR_KEY,
+	ERR_EXIT_GAME
+}	t_error;
 
 /* ************************************************************************** */
 /*                                GAME SETTINGS                               */
@@ -36,7 +59,7 @@
 /*                                MAP SETTINGS                                */
 /* ************************************************************************** */
 
-# define FILE_EXTENSION 	".ber"
+# define FILE_EXTENSION 	".cub"
 
 # define WALL 				'1'
 # define FLOOR 				'0'
