@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 11:11:13 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/15 18:42:08 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/15 19:37:01 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/15 19:45:36 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	ft_parsing_line(t_game *game, char *buffer)
 {
-	t_game	game;
-
-	errno = 0;
-	if (ac < 2)
-		ft_exit(&game, ERR_ARGS, "U need to specify a map file, dumb ass !");
-	else if (ac > 2)
-		ft_exit(&game, ERR_ARGS, "Too many arguments, just think...");
-	ft_memset(&game, 0, sizeof(t_game));
-	game.map.path = av[1];
-	
-	ft_parsing(&game);
-	return (0);
+	// Cases
+	// 1. Resolution
+	// 2. Texture
+		// 2.1. North
+		// 2.2. South
+		// 2.3. West
+		// 2.4. East
+	// 3. Color
+		// 3.1. Floor
+		// 3.2. Ceiling
+	// 4. Map
+		// 4.1. Check if the line is valid:
+			// 4.1.1. Check if the line is empty
+			// 4.1.2. Check if the line is valid
+		// 4.2. Add the line to the map
+	// 5. Bonus
+	// 6. Error
 }

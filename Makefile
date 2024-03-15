@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/08 12:09:08 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/15 19:38:07 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,17 @@ SRCS_DIR	= srcs
 # SYSTEM
 SRCS			=	$(addprefix $(SRCS_DIR)/core/, $(addsuffix .c, \
 					main \
+					))
+
+# EXIT
+SRCS			+=	$(addprefix $(SRCS_DIR)/exit/, $(addsuffix .c, \
+					exit \
+					))
+
+# PARSING
+SRCS			+=	$(addprefix $(SRCS_DIR)/parsing/, $(addsuffix .c, \
+					parsing \
+					parsing_line \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)

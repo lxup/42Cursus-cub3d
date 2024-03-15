@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/08 12:39:00 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/15 17:51:08 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	ft_exit(t_game *game, t_error error, char *msg)
 	{
 		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
 	}
-	fr_free_game(game);
-	return (ext(error));
+	ft_free_game(game);
+	return (exit(error), error);
 }

@@ -1,5 +1,5 @@
-.obj/srcs/core/main.o: srcs/core/main.c includes/cub3d.h includes/lib.h \
-  includes/../mlx-linux/mlx.h libft/includes/libft.h \
+.obj/srcs/parsing/parsing.o: srcs/parsing/parsing.c includes/cub3d.h \
+  includes/lib.h includes/../mlx-linux/mlx.h libft/includes/libft.h \
   libft/includes/libft_checker.h libft/includes/libft_converter.h \
   libft/includes/libft_display.h libft/includes/libft_display_str.h \
   libft/includes/libft_display_char.h libft/includes/libft_display_nbr.h \
