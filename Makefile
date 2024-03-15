@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/15 19:38:07 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/15 20:27:40 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,7 +152,7 @@ $(OBJ_PATH)/%.o: %.c
 			@$(CC) $(CFLAGS) $(INCL_RDL_HEADER) -c $< -o $@
 
 clean:
-			@$(RM) $(OBJS)
+			@$(RM) $(OBJ_PATH)
 			@$(MAKE_LIBFT) clean
 			@$(MAKE_MLX) clean
 			@echo "${YELLOW}> All objects files of ${NAME} have been deleted ❌${END}"
