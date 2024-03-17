@@ -6,13 +6,13 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/15 17:51:08 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/17 16:35:46 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_free_game(t_game *game)
+static int	ft_free_game(t_game *game)
 {
 	(void)game;
 	return (1);

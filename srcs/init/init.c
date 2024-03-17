@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 11:11:13 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 15:52:07 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/17 15:40:37 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/17 15:50:13 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	ft_init(t_game *game, char *file)
 {
-	t_game	game;
-
-	errno = 0;
-	if (ac < 2)
-		ft_exit(&game, ERR_ARGS, "U need to specify a map file, dumb ass !");
-	else if (ac > 2)
-		ft_exit(&game, ERR_ARGS, "Too many arguments, just think...");
-	ft_init(&game, av[1]);
-	ft_parsing(&game);
-	return (0);
+	ft_memset(game, 0, sizeof(t_game));
+	ft_init_win(game);
+	ft_init_map(game, file);
+	ft_init_texture(game);
+	return (1);
 }

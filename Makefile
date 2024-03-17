@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/15 20:27:40 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/17 16:15:35 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,10 +90,30 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/exit/, $(addsuffix .c, \
 					exit \
 					))
 
+# INIT
+SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
+					init \
+					init_win \
+					init_map \
+					init_texture \
+					))
+
 # PARSING
 SRCS			+=	$(addprefix $(SRCS_DIR)/parsing/, $(addsuffix .c, \
 					parsing \
+					parsing_get_map \
 					parsing_line \
+					parsing_texture \
+					parsing_color \
+					parsing_map \
+					parsing_error \
+					))
+
+# UTILS
+SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
+					ft_2d_free \
+					ft_2d_putstr \
+					ft_2d_strlen \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)
@@ -140,7 +160,7 @@ all: 		$(NAME)
 $(NAME):	${OBJ_PATH} $(OBJS)
 			@$(MAKE_LIBFT)
 			@$(MAKE_MLX)
-			@$(CC) $(CFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJS) $(LDLIBS) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME)
 			@echo "\n${GREEN}> ${NAME} was successfuly compiled 🎉${END}"
 
 $(OBJ_PATH):

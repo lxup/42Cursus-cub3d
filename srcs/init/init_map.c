@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 11:11:13 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 15:52:07 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/17 15:41:43 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/17 15:45:26 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	ft_init_map(t_game *game, char *file)
 {
-	t_game	game;
-
-	errno = 0;
-	if (ac < 2)
-		ft_exit(&game, ERR_ARGS, "U need to specify a map file, dumb ass !");
-	else if (ac > 2)
-		ft_exit(&game, ERR_ARGS, "Too many arguments, just think...");
-	ft_init(&game, av[1]);
-	ft_parsing(&game);
-	return (0);
+	game->map.path = file;
+	game->map.size.x = 0;
+	game->map.size.y = 0;
+	game->map.fd = -1;
+	game->map.content = NULL;
+	game->map.e_count = 0;
+	game->map.p_count = 0;
+	game->map.c_count = 0;
+	game->map.k_count = 0;
+	game->map.w_count = 0;
+	game->map.spawn.x = 0;
+	game->map.spawn.y = 0;
+	return (1);
 }
