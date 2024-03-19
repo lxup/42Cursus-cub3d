@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:41:03 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 16:35:58 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 10:48:11 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static int	load_xpm(t_game *game, char *path, t_image *img)
 	return (1);
 }
 
-static int	load_texture(t_game *game, char *path, t_image *img, int parsing)
+static int	load_texture(t_game *game, char *path, t_image *img, int *parsing)
 {
 	int	fd;
-
-	while (*path == ' ')
+	
+	while (*path == ' ' || *path == '\t')
 		path++;
 	if (*path == '\0')
 		return (0);
@@ -37,22 +37,23 @@ static int	load_texture(t_game *game, char *path, t_image *img, int parsing)
 	if (close(fd) < 0)
 		ft_exit(game, ERR_FILE, "Can't close the texture file.");
 	load_xpm(game, path, img);
-	if (parsing != 0)
-		game->parsing |= parsing;
+	if (*parsing == 0)
+		*parsing = 1;
 	return (1);
 }
 
 int	ft_parsing_texture(t_game *game, char *buffer)
 {
-	if (!ft_strncmp(buffer, "NO ", 3) && !(game->parsing & PARSING_NO))
-		return (load_texture(game, buffer + 2, &game->textures.wall_no, PARSING_NO));
-	else if (!ft_strncmp(buffer, "SO ", 3) && !(game->parsing & PARSING_SO))
-		return (load_texture(game, buffer + 2, &game->textures.wall_so, PARSING_SO));
-	else if (!ft_strncmp(buffer, "WE ", 3) && !(game->parsing & PARSING_WE))
-		return (load_texture(game, buffer + 2, &game->textures.wall_we, PARSING_WE));
-	else if (!ft_strncmp(buffer, "EA ", 3) && !(game->parsing & PARSING_EA))
-		return (load_texture(game, buffer + 2, &game->textures.wall_ea, PARSING_EA));
-	else if (!ft_strncmp(buffer, "S ", 2) && !(game->parsing & PARSING_S))
-		return (load_texture(game, buffer + 1, &game->textures.sprite, PARSING_S));
+	buffer[ft_strlen(buffer) - 1] = 0;
+	if (!ft_strncmp(buffer, "NO ", 3) && !game->parsing.no)
+		return (load_texture(game, buffer + 2, &game->textures.wall_no, &game->parsing.no));
+	else if (!ft_strncmp(buffer, "SO ", 3) && !game->parsing.so)
+		return (load_texture(game, buffer + 2, &game->textures.wall_so, &game->parsing.so));
+	else if (!ft_strncmp(buffer, "WE ", 3) && !game->parsing.we)
+		return (load_texture(game, buffer + 2, &game->textures.wall_we, &game->parsing.we));
+	else if (!ft_strncmp(buffer, "EA ", 3) && !game->parsing.ea)
+		return (load_texture(game, buffer + 2, &game->textures.wall_ea, &game->parsing.ea));
+	else if (!ft_strncmp(buffer, "S ", 2) && !game->parsing.s)
+		return (load_texture(game, buffer + 1, &game->textures.sprite, &game->parsing.s));
 	return (0);
 }

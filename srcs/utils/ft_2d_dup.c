@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_2d_dup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:03:32 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/19 11:59:25 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/19 12:00:14 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_exit(t_game *game, t_error error, char *msg)
+char	**ft_2d_dup(char **array)
 {
-	if (error)
+	char	**dup;
+	int		i;
+
+	if (!array)
+		return (NULL);
+	dup = malloc(sizeof(char *) * (ft_2d_size(array) + 1));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (array && array[i])
 	{
-		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
+		dup[i] = ft_strdup(array[i]);
+		if (!dup[i])
+		{
+			ft_2d_free(dup, i);
+			return (NULL);
+		}
+		i++;
 	}
-	ft_free_game(game);
-	return (exit(error), error);
+	dup[i] = NULL;
+	return (dup);
 }

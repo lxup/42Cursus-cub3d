@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 15:49:14 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 11:55:56 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@ typedef struct s_map
 	t_vector	size;
 	int			fd;
 	char		**content;
-	int			e_count;
-	int			p_count;
-	int			c_count;
-	int			k_count;
-	int			w_count;
+	char		**content_dup;
+	t_list		*content_list;
 	t_vector	spawn;
 }	t_map;
 
@@ -52,6 +49,14 @@ typedef struct s_image
 	int			endian;
 }	t_image;
 
+typedef struct	s_color
+{
+	int			r;
+	int			g;
+	int			b;
+	int			a;
+}	t_color;
+
 typedef struct s_textures
 {
 	t_image		wall_no;
@@ -59,38 +64,30 @@ typedef struct s_textures
 	t_image		wall_we;
 	t_image		wall_ea;
 	t_image		sprite;
-	t_image		coins;
-	t_image		exit_open;
-	t_image		exit_closed;
-	t_image		heart_full;
-	t_image		heart_empty;
-	t_image		enemy;
-	t_image		weapon;
+	t_color		floor;
+	t_color		ceiling;
 }	t_textures;
+
+typedef struct	s_parsing
+{
+	char		*line;
+	int			no;
+	int			so;
+	int			we;
+	int			ea;
+	int			s;
+	int			f;
+	int			c;
+	int			map;
+	int			succes;
+}	t_parsing;
 
 typedef struct		s_game
 {
 	t_win			win;
 	t_map			map;
 	t_textures		textures;
-	int				parsing;
+	t_parsing		parsing;
 }	t_game;
-
-/* ************************************************************************** */
-/*                                   PARSING                                  */
-/* ************************************************************************** */
-
-typedef enum e_parsing
-{
-	PARSING_R = 1,
-	PARSING_NO,
-	PARSING_SO,
-	PARSING_EA,
-	PARSING_WE,
-	PARSING_S,
-	PARSING_F,
-	PARSING_C,
-	PARSING_MAP,
-}	t_parsing;
 
 #endif

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:03:32 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/19 11:02:27 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/19 11:16:24 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_exit(t_game *game, t_error error, char *msg)
+int	ft_free_game(t_game *game)
 {
-	if (error)
-	{
-		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
-	}
-	ft_free_game(game);
-	return (exit(error), error);
+	ft_free_map(game);
+	ft_free_texture(game);
+	ft_free_parsing(game);
+	ft_free_win(game);
+	return (1);
 }

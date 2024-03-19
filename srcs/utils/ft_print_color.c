@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_print_color.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:03:32 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/18 18:48:38 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/18 18:48:57 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_exit(t_game *game, t_error error, char *msg)
+void	ft_print_color(t_color color)
 {
-	if (error)
-	{
-		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
-	}
-	ft_free_game(game);
-	return (exit(error), error);
+	printf("R: %d, G: %d, B: %d\n", color.r, color.g, color.b);
 }

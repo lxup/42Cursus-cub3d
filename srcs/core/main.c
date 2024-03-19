@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:11:13 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 15:52:07 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 11:17:53 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	main(int ac, char **av)
 	else if (ac > 2)
 		ft_exit(&game, ERR_ARGS, "Too many arguments, just think...");
 	ft_init(&game, av[1]);
+	game.win.mlx_ptr = mlx_init();
+	if (!game.win.mlx_ptr)
+		ft_exit(&game, ERR_MLX, "Mlx failed to init");
 	ft_parsing(&game);
-	return (0);
+	return (ft_exit(&game, EXIT_SUCCESS, NULL));
 }

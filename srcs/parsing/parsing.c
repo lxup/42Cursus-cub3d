@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:24:26 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/16 12:06:09 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 11:50:38 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,31 @@ static int	ft_parsing_open_fd(t_game *game)
 	return (game->map.fd);
 }
 
+static int	ft_parsing_get_map(t_game *game)
+{
+	while (1)
+	{
+		game->parsing.line = get_next_line(game->map.fd);
+		if (!game->parsing.line || !*game->parsing.line)
+			break ;
+		ft_parsing_line(game, game->parsing.line);
+		free(game->parsing.line);
+		game->parsing.line = NULL;
+	}
+	if (close(game->map.fd) < 0)
+		ft_exit(game, ERR_FILE, "Can't close the file.");
+	game->map.fd = -1;
+	return (1);
+}
+
 
 
 int	ft_parsing(t_game *game)
 {
 	ft_parsing_open_fd(game);
 	ft_parsing_get_map(game);
+	printf("map len: x = %d, y = %d\n", game->map.size.x, game->map.size.y);
+	printf("spawn: x = %d, y = %d\n", game->map.spawn.x, game->map.spawn.y);
+	ft_parsing_map_check(game);
 	return (1);
 }

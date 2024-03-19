@@ -6,47 +6,50 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:37:01 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 16:36:41 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/18 19:24:29 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static int	ft_parsing_error(t_game *game, char *line)
+{
+	if (!ft_strncmp(line, "NO ", 3) && game->parsing.no)
+		return (ft_exit(game, ERR_ARGS, "North texture is already set."));
+	if (!ft_strncmp(line, "SO ", 3) && game->parsing.so)
+		return (ft_exit(game, ERR_ARGS, "South texture is already set."));
+	if (!ft_strncmp(line, "WE ", 3) && game->parsing.we)
+		return (ft_exit(game, ERR_ARGS, "West texture is already set."));
+	if (!ft_strncmp(line, "EA ", 3) && game->parsing.ea)
+		return (ft_exit(game, ERR_ARGS, "East texture is already set."));
+	if (!ft_strncmp(line, "S ", 2) && game->parsing.s)
+		return (ft_exit(game, ERR_ARGS, "Sprite texture is already set."));
+	if (!ft_strncmp(line, "F ", 2) && game->parsing.f)
+		return (ft_exit(game, ERR_ARGS, "Floor color is already set."));
+	if (!ft_strncmp(line, "C ", 2) && game->parsing.c)
+		return (ft_exit(game, ERR_ARGS, "Ceiling color is already set."));
+	return (ft_exit(game, ERR_ARGS, "Element missing or invalid."));
+}
+
 int	ft_parsing_line(t_game *game, char *line)
 {
-	// printf("line = %s\n", line);
-	// if (!ft_strncmp(line, "R ", 2) && !(game->parsing & PARSING_R))
-	// 	return (ft_parsing_resolution(game, line));
-	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "S ", 2))
+	if (*line == '\n' && !game->parsing.map)
+		return (1);
+	if ((!ft_strncmp(line, "NO ", 3) && !game->parsing.no)
+		|| (!ft_strncmp(line, "SO ", 3) && !game->parsing.so)
+		|| (!ft_strncmp(line, "WE ", 3) && !game->parsing.we)
+		|| (!ft_strncmp(line, "EA ", 3) && !game->parsing.ea)
+		|| (!ft_strncmp(line, "S ", 2) && !game->parsing.s))
 		return (ft_parsing_texture(game, line));
-	if ((!ft_strncmp(line, "F ", 2) && !(game->parsing & PARSING_F))
-		|| (!ft_strncmp(line, "C ", 2) && !(game->parsing & PARSING_C)))
+	if ((!ft_strncmp(line, "F ", 2) && !game->parsing.f)
+		|| (!ft_strncmp(line, "C ", 2) && !game->parsing.c))
 		return (ft_parsing_color(game, line));
-	// check line for map
-	if ((game->parsing & PARSING_MAP) && (*line == '\n'))
+	if (!game->parsing.succes && game->parsing.map && *line == '\n')
 		return (ft_exit(game, ERR_MAP, "Map is not valid."));
-	if (game->parsing & PARSING_MAP)
+	if (game->parsing.map || (!game->parsing.map && *line
+		&& (game->parsing.no && game->parsing.so && game->parsing.we
+		&& game->parsing.ea && game->parsing.s && game->parsing.f
+		&& game->parsing.c)))
 		return (ft_parsing_map(game, line));
 	return (ft_parsing_error(game, line));
-// 	// Cases
-// 	// 1. Resolution
-// 	// 2. Texture
-// 		// 2.1. North
-// 		// 2.2. South
-// 		// 2.3. West
-// 		// 2.4. East
-// 	if (!ft_strncmp(line, "S ", 2) || !ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3))
-// 		return (ft_parsing_texture(game, line));
-// 	// 3. Color
-// 		// 3.1. Floor
-// 		// 3.2. Ceiling
-// 	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
-// 		return (ft_parsing_color(game, line));
-// 	// 4. Map
-// 		// 4.1. Check if the line is valid:
-// 			// 4.1.1. Check if the line is empty
-// 			// 4.1.2. Check if the line is valid
-// 		// 4.2. Add the line to the map
-// 	// 5. Bonus
-// 	// 6. Error
 }

@@ -6,9 +6,11 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/17 16:15:35 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/19 12:02:29 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+END				=	\033[0m
 
 # COLORS
 BLACK			=	\033[0;30m
@@ -88,6 +90,11 @@ SRCS			=	$(addprefix $(SRCS_DIR)/core/, $(addsuffix .c, \
 # EXIT
 SRCS			+=	$(addprefix $(SRCS_DIR)/exit/, $(addsuffix .c, \
 					exit \
+					free_game \
+					free_map \
+					free_parsing \
+					free_texture \
+					free_win \
 					))
 
 # INIT
@@ -101,19 +108,23 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
 # PARSING
 SRCS			+=	$(addprefix $(SRCS_DIR)/parsing/, $(addsuffix .c, \
 					parsing \
-					parsing_get_map \
 					parsing_line \
 					parsing_texture \
 					parsing_color \
 					parsing_map \
 					parsing_error \
+					map/parsing_map_check \
+					map/parsing_map_create \
+					map/parsing_map_dup \
 					))
 
 # UTILS
 SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
 					ft_2d_free \
 					ft_2d_putstr \
-					ft_2d_strlen \
+					ft_2d_size \
+					ft_2d_dup \
+					ft_print_color \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)
@@ -168,8 +179,8 @@ $(OBJ_PATH):
 
 $(OBJ_PATH)/%.o: %.c
 			@mkdir -p $(dir $@)
-			@printf "${BLUE}>Generating ${NAME} objects... %-33.33s\r" $@
-			@$(CC) $(CFLAGS) $(INCL_RDL_HEADER) -c $< -o $@
+			@printf "${BLUE}>Generating ${NAME} objects... %-33.33s\r${END}" $@
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 			@$(RM) $(OBJ_PATH)

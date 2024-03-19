@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:46:14 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/17 15:53:22 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/18 18:53:33 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ static int	init_img(t_game *game, t_image *img)
 	return (1);
 }
 
+static int	init_color(t_color *color)
+{
+	color->r = -1;
+	color->g = -1;
+	color->b = -1;
+	color->a = -1;
+	return (1);
+}
+
 int	ft_init_texture(t_game *game)
 {
 	init_img(game, &game->textures.wall_no);
@@ -32,6 +41,8 @@ int	ft_init_texture(t_game *game)
 	init_img(game, &game->textures.wall_we);
 	init_img(game, &game->textures.wall_ea);
 	init_img(game, &game->textures.sprite);
+	init_color(&game->textures.ceiling);
+	init_color(&game->textures.floor);
 	// Add other textures here
 	return (1);
 }

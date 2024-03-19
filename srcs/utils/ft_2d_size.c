@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_2d_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:03:32 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/16 11:27:03 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/16 11:27:22 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_exit(t_game *game, t_error error, char *msg)
+int	ft_2d_size(char **array)
 {
-	if (error)
-	{
-		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
-	}
-	ft_free_game(game);
-	return (exit(error), error);
+	int	i;
+
+	i = 0;
+	while (array && array[i])
+		i++;
+	return (i);
 }

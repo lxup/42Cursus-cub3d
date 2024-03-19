@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   free_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 12:27:50 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:03:32 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/19 11:06:47 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/19 11:13:21 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_exit(t_game *game, t_error error, char *msg)
+static int	destroy_image(t_game *game, t_image *img)
 {
-	if (error)
+	if (img->img)
 	{
-		ft_dprintf(2, C_RED "Error -> %s\n" C_RESET, msg);
+		mlx_destroy_image(game->win.mlx_ptr, img->img);
+		img->img = NULL;
 	}
-	ft_free_game(game);
-	return (exit(error), error);
+	return (1);
+}
+
+int	ft_free_texture(t_game *game)
+{
+	destroy_image(game, &game->textures.wall_no);
+	destroy_image(game, &game->textures.wall_so);
+	destroy_image(game, &game->textures.wall_we);
+	destroy_image(game, &game->textures.wall_ea);
+	destroy_image(game, &game->textures.sprite);
+	return (1);
 }
