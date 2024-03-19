@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:14:33 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 12:04:33 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 18:05:35 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ static int	free_content(t_game *game)
 	{
 		ft_2d_free(game->map.content, -1);
 		game->map.content = NULL;
-	}
-	if (game->map.content_dup)
-	{
-		ft_2d_free(game->map.content_dup, -1);
-		game->map.content_dup = NULL;
 	}
 	return (1);
 }

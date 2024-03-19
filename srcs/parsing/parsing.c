@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:24:26 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:50:38 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 20:14:10 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	ft_parsing(t_game *game)
 {
 	ft_parsing_open_fd(game);
 	ft_parsing_get_map(game);
-	printf("map len: x = %d, y = %d\n", game->map.size.x, game->map.size.y);
-	printf("spawn: x = %d, y = %d\n", game->map.spawn.x, game->map.spawn.y);
 	ft_parsing_map_check(game);
 	return (1);
 }

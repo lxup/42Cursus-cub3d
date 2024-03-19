@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map_check.c                                :+:      :+:    :+:   */
+/*   ft_color_to_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 11:28:19 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 18:13:05 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/19 22:48:08 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/19 22:48:24 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_parsing_map_check(t_game *game)
+int	ft_color_to_int(t_color color)
 {
-	if (game->map.spawn.x == -1 || game->map.spawn.y == -1)
-		return (ft_exit(game, ERR_MAP, "No spawn point found in the map"));
-	ft_parsing_map_create(game);
-	ft_parsing_map_leak(game, 0, 0);
-	return (1);
+	return ((color.r << 16) + (color.g << 8) + color.b);
 }

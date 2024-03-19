@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:11:13 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:17:53 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 18:35:22 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	main(int ac, char **av)
 	if (!game.win.mlx_ptr)
 		ft_exit(&game, ERR_MLX, "Mlx failed to init");
 	ft_parsing(&game);
+	ft_gameplay(&game);
 	return (ft_exit(&game, EXIT_SUCCESS, NULL));
 }

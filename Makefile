@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/19 12:02:29 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/19 22:48:41 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRCS_DIR	= srcs
 # SYSTEM
 SRCS			=	$(addprefix $(SRCS_DIR)/core/, $(addsuffix .c, \
 					main \
+					gameplay \
 					))
 
 # EXIT
@@ -95,6 +96,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/exit/, $(addsuffix .c, \
 					free_parsing \
 					free_texture \
 					free_win \
+					free_image \
 					))
 
 # INIT
@@ -103,6 +105,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
 					init_win \
 					init_map \
 					init_texture \
+					init_image \
 					))
 
 # PARSING
@@ -112,10 +115,21 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/parsing/, $(addsuffix .c, \
 					parsing_texture \
 					parsing_color \
 					parsing_map \
-					parsing_error \
 					map/parsing_map_check \
 					map/parsing_map_create \
-					map/parsing_map_dup \
+					map/parsing_map_leak \
+					))
+
+# HOOKS
+SRCS			+=	$(addprefix $(SRCS_DIR)/hooks/, $(addsuffix .c, \
+					hooks \
+					hooks_keyboard \
+					hooks_mouse \
+					))
+
+# RAYCASTING
+SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
+					render \
 					))
 
 # UTILS
@@ -125,6 +139,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
 					ft_2d_size \
 					ft_2d_dup \
 					ft_print_color \
+					ft_color_to_int \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)

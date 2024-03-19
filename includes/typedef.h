@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:55:56 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 21:42:49 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,9 @@ typedef struct s_map
 	t_vector	size;
 	int			fd;
 	char		**content;
-	char		**content_dup;
 	t_list		*content_list;
 	t_vector	spawn;
 }	t_map;
-
-typedef struct s_win
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	int			height;
-	int			width;
-}	t_win;
 
 typedef struct s_image
 {
@@ -48,6 +39,15 @@ typedef struct s_image
 	int			size_line;
 	int			endian;
 }	t_image;
+
+typedef struct s_win
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	int			height;
+	int			width;
+	t_image		frame;
+}	t_win;
 
 typedef struct	s_color
 {

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_error.c                                    :+:      :+:    :+:   */
+/*   hooks_keyboard.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 12:31:31 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/16 12:31:35 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/19 20:21:47 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/19 20:29:44 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_parsing_error(t_game *game, char *line)
+int	ft_hook_on_keypress(int keycode, t_game *game)
 {
+	printf("ft_hook_on_keypress: %d\n", keycode);
+	if (keycode == KEY_ESC)
+		return (ft_hook_on_window_close(game));
+	// ADD OTHER KEYCODES
+	return (1);
+}
+
+int	ft_hook_on_keyrelease(int keycode, t_game *game)
+{
+	printf("ft_hook_on_keyrelease: %d\n", keycode);
+	(void)keycode;
 	(void)game;
-	(void)line;
+	// ADD KEY RELEASE
 	return (1);
 }

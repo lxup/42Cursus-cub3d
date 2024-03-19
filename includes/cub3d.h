@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 12:02:56 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 23:16:59 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 /*                                    CORE                                    */
 /* ************************************************************************** */
 
+int		ft_gameplay(t_game *game);
+
 /* ************************************************************************** */
 /*                                    INIT                                    */
 /* ************************************************************************** */
@@ -31,6 +33,7 @@ int		ft_init(t_game *game, char *file);
 int		ft_init_win(t_game *game);
 int		ft_init_map(t_game *game, char *file);
 int		ft_init_texture(t_game *game);
+int		ft_init_image(t_game *game, t_image *img);
 
 /* ************************************************************************** */
 /*                                   PARSING                                  */
@@ -43,8 +46,22 @@ int		ft_parsing_color(t_game *game, char *line);
 int		ft_parsing_map(t_game *game, char *line);
 int		ft_parsing_map_check(t_game *game);
 int		ft_parsing_map_create(t_game *game);
-int		ft_parsing_map_dup(t_game *game);
-// int		ft_parsing_error(t_game *game, char *line);
+int		ft_parsing_map_leak(t_game *game, int x, int y);
+
+/* ************************************************************************** */
+/*                                   HOOKS                                    */
+/* ************************************************************************** */
+
+int		ft_hooks(t_game *game);
+int		ft_hook_on_window_close(t_game *game);
+int		ft_hook_on_keypress(int keycode, t_game *game);
+int		ft_hook_on_keyrelease(int keycode, t_game *game);
+
+/* ************************************************************************** */
+/*                                 RAYCASTING                                 */
+/* ************************************************************************** */
+
+int		ft_render(t_game *game);
 
 /* ************************************************************************** */
 /*                                    EXIT                                    */
@@ -56,6 +73,7 @@ int		ft_free_map(t_game *game);
 int		ft_free_parsing(t_game *game);
 int		ft_free_texture(t_game *game);
 int		ft_free_win(t_game *game);
+int		free_image(t_game *game, t_image *img);
 
 /* ************************************************************************** */
 /*                                    UTILS                                   */
@@ -66,4 +84,12 @@ int		ft_2d_putstr(char **array);
 int		ft_2d_size(char **array);
 char	**ft_2d_dup(char **array);
 void	ft_print_color(t_color color);
+int		ft_color_to_int(t_color color);
+
+/* ************************************************************************** */
+/*                                  MLX (Custom)                              */
+/* ************************************************************************** */
+
+int		custom_mlx_pixel_put(t_image *img, int x, int y, int color);
+
 #endif

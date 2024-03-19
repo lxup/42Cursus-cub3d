@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map_check.c                                :+:      :+:    :+:   */
+/*   init_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 11:28:19 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 18:13:05 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/19 21:41:54 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/19 21:42:06 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_parsing_map_check(t_game *game)
+int	ft_init_image(t_game *game, t_image *img)
 {
-	if (game->map.spawn.x == -1 || game->map.spawn.y == -1)
-		return (ft_exit(game, ERR_MAP, "No spawn point found in the map"));
-	ft_parsing_map_create(game);
-	ft_parsing_map_leak(game, 0, 0);
+	(void)game;
+	img->img = NULL;
+	img->addr = NULL;
+	img->size.x = 0;
+	img->size.y = 0;
+	img->bits_per_pixel = 0;
+	img->size_line = 0;
+	img->endian = 0;
 	return (1);
 }

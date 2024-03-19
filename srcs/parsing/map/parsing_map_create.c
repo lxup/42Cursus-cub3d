@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:37:03 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 11:50:18 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/19 18:47:17 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,15 @@ int	ft_parsing_map_create(t_game *game)
 	i = 0;
 	while (current && i < height)
 	{
-		game->map.content[i++] = current->content;
+		game->map.content[i++] = ft_strndup(current->content, \
+			game->map.size.x, 0);
+		if (game->map.content[i - 1] == NULL)
+			return (ft_2d_free(game->map.content, i - 1),
+				game->map.content = NULL,
+				ft_exit(game, ERR_MAP, "Malloc failed"));
 		current = current->next;
 	}
-	ft_lstclear(&game->map.content_list, NULL);
+	ft_lstclear(&game->map.content_list, &free);
 	game->map.content_list = NULL;
 	return (1);
 }
