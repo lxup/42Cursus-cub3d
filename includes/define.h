@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:03:17 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/16 11:57:42 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 20:12:27 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,6 @@ typedef enum e_error
 # define WINDOW_TITLE 		"cub3d"
 # define LIFE_COUNT			4
 
-/* Others */
-# define DIRECTION_TOP		1
-# define DIRECTION_BOT		2
-# define DIRECTION_LEFT		3
-# define DIRECTION_RIGHT	4
-
 /* ************************************************************************** */
 /*                                MAP SETTINGS                                */
 /* ************************************************************************** */
@@ -62,12 +56,7 @@ typedef enum e_error
 # define FILE_EXTENSION 	".cub"
 
 # define WALL 				'1'
-# define FLOOR 				'0'
-# define COINS 				'C'
-# define PLAYER 			'P'
-# define EXIT 				'E'
-# define ENEMY 				'K'
-# define WEAPON 			'W'
+# define EMPTY 				'0'
 
 /* ************************************************************************** */
 /*                                    ASSETS                                  */
@@ -118,11 +107,20 @@ typedef enum e_error
 # endif
 
 /* ************************************************************************** */
-/*                                    IMG                                     */
+/*                                   MOVE	                                  */
 /* ************************************************************************** */
 
-# define IMG_WIDTH			32
-# define IMG_HEIGHT			32
+// Physical movement
+#  define M_UP				1
+#  define M_DOWN			2
+#  define M_LEFT			3
+#  define M_RIGHT			4
+
+// View movement
+#  define M_VIEW_UP			5
+#  define M_VIEW_DOWN		6
+#  define M_VIEW_LEFT		7
+#  define M_VIEW_RIGHT		8
 
 /* ************************************************************************** */
 /*                                  TEMPLATE                                  */

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:50:24 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:00 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 19:38:02 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int	ft_init_win(t_game *game)
 	game->win.win_ptr = NULL;
 	game->win.height = -1;
 	game->win.width = -1;
+	ft_init_image(game, &game->win.img);
 	return (1);
 }

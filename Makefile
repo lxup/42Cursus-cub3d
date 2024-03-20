@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/20 11:55:50 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/20 19:36:20 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,6 +108,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
 					init_image \
 					init_vector \
 					init_coord \
+					init_frame \
 					))
 
 # PARSING
@@ -120,6 +121,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/parsing/, $(addsuffix .c, \
 					map/parsing_map_check \
 					map/parsing_map_create \
 					map/parsing_map_leak \
+					parsing_player \
 					))
 
 # HOOKS
@@ -134,6 +136,10 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
 					render \
 					raycasting \
 					raycasting_step \
+					raycasting_dda \
+					raycasting_wall \
+					raycasting_draw \
+					raycasting_draw_wall \
 					))
 
 # UTILS
@@ -143,7 +149,13 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
 					ft_2d_size \
 					ft_2d_dup \
 					ft_print_color \
+					ft_print_frame \
 					ft_color_to_int \
+					))
+
+# MLX
+SRCS			+=	$(addprefix $(SRCS_DIR)/mlx/, $(addsuffix .c, \
+					mlx_put_pixel \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)

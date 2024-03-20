@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:47:34 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 11:57:46 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 19:45:12 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_raycasting_init(t_game *game, int x)
 {
-	// Todo: init or reset frame
+	ft_init_frame(&game->frame);
 	game->frame.camera.x = 2 * x / (double)game->win.width - 1;
 	game->frame.ray_dir.x = game->player.dir.x + game->player.plane.x * game->frame.camera.x;
 	game->frame.ray_dir.y = game->player.dir.y + game->player.plane.y * game->frame.camera.x;
@@ -33,7 +33,19 @@ int	ft_raycasting(t_game *game)
 	x = 0;
 	while (x < game->win.width)
 	{
+		printf("x: %d\n", x);
+		ft_print_frame(game->frame);
+		printf("raycasting init\n");
 		ft_raycasting_init(game, x);
+		printf("raycasting dda\n");
+		ft_raycasting_dda(game);
+		printf("raycasting wall\n");
+		ft_raycasting_wall(game);
+		printf("raycasting draw\n");
+		ft_raycasting_draw(game, x);
+		printf("raycasting end\n");
+		ft_print_frame(game->frame);
+		// ft_exit(game, EXIT_SUCCESS, "raycasting end");
 		x++;
 	}
 	return (1);

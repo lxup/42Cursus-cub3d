@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 11:59:21 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 19:37:37 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_win
 	void		*win_ptr;
 	int			height;
 	int			width;
+	t_image		img;
 }	t_win;
 
 typedef struct	s_color
@@ -88,15 +89,21 @@ typedef struct	s_parsing
 
 typedef struct	s_frame
 {
-	t_image		img;
 	t_coord		ray_dir;
-	t_coord		map;
+	t_vector	map;
 	t_coord		side_dist;
 	t_coord		delta_dist;
 	t_coord		camera;
-	t_coord		step;
+	t_vector	step;
 	t_coord		wall;
 	int			hit;
+	char		hit_value;
+	int			side;
+	double		perp_wall_dist;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			color;
 }	t_frame;
 
 typedef struct	s_player

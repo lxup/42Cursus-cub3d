@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_win.c                                         :+:      :+:    :+:   */
+/*   init_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 11:03:03 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 19:37:40 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/20 19:36:07 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/20 19:40:28 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_free_win(t_game *game)
+int	ft_init_frame(t_frame *frame)
 {
-	free_image(game, &game->win.img);
-	if (game->win.mlx_ptr)
-	{
-		if (game->win.win_ptr)
-			mlx_destroy_window(game->win.mlx_ptr, game->win.win_ptr);
-		mlx_destroy_display(game->win.mlx_ptr);
-		free(game->win.mlx_ptr);
-		game->win.mlx_ptr = NULL;
-	}
+	ft_init_coord(&frame->ray_dir, 0, 0);
+	ft_init_vector(&frame->map, 0, 0);
+	ft_init_coord(&frame->side_dist, 0, 0);
+	ft_init_coord(&frame->delta_dist, 0, 0);
+	ft_init_vector(&frame->step, 0, 0);
+	ft_init_coord(&frame->wall, 0, 0);
+	frame->hit = 0;
+	frame->hit_value = 0;
+	frame->side = -1;
+	frame->perp_wall_dist = 0;
+	frame->line_height = 0;
+	frame->draw_start = 0;
+	frame->draw_end = 0;
+	frame->color = 0;
 	return (1);
 }

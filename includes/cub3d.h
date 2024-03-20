@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 11:56:15 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 19:40:41 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_init_texture(t_game *game);
 int		ft_init_image(t_game *game, t_image *img);
 int		ft_init_vector(t_vector *vec, int x, int y);
 int		ft_init_coord(t_coord *coord, double x, double y);
+int		ft_init_frame(t_frame *frame);
 
 /* ************************************************************************** */
 /*                                   PARSING                                  */
@@ -49,6 +50,7 @@ int		ft_parsing_map(t_game *game, char *line);
 int		ft_parsing_map_check(t_game *game);
 int		ft_parsing_map_create(t_game *game);
 int		ft_parsing_map_leak(t_game *game, int x, int y);
+int		ft_parsing_player(t_game *game);
 
 /* ************************************************************************** */
 /*                                   HOOKS                                    */
@@ -66,6 +68,10 @@ int		ft_hook_on_keyrelease(int keycode, t_game *game);
 int		ft_render(t_game *game);
 int		ft_raycasting(t_game *game);
 void	ft_raycasting_step(t_game *game);
+int		ft_raycasting_dda(t_game *game);
+int		ft_raycasting_wall(t_game *game);
+int		ft_raycasting_draw(t_game *game, int x);
+int		ft_raycasting_draw_wall(t_game *game, int x);
 
 /* ************************************************************************** */
 /*                                    EXIT                                    */
@@ -89,6 +95,7 @@ int		ft_2d_size(char **array);
 char	**ft_2d_dup(char **array);
 void	ft_print_color(t_color color);
 int		ft_color_to_int(t_color color);
+void	ft_print_frame(t_frame frame);
 
 /* ************************************************************************** */
 /*                                  MLX (Custom)                              */
