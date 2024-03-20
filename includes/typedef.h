@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 21:42:49 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 11:59:21 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 
 typedef struct s_vector
 {
-	int			x;
-	int			y;
+	int		x;
+	int		y;
 }	t_vector;
 
+typedef struct	s_coord
+{
+	double		x;
+	double		y;
+}	t_coord;
 
 typedef struct s_map
 {
@@ -46,7 +51,6 @@ typedef struct s_win
 	void		*win_ptr;
 	int			height;
 	int			width;
-	t_image		frame;
 }	t_win;
 
 typedef struct	s_color
@@ -82,12 +86,34 @@ typedef struct	s_parsing
 	int			succes;
 }	t_parsing;
 
+typedef struct	s_frame
+{
+	t_image		img;
+	t_coord		ray_dir;
+	t_coord		map;
+	t_coord		side_dist;
+	t_coord		delta_dist;
+	t_coord		camera;
+	t_coord		step;
+	t_coord		wall;
+	int			hit;
+}	t_frame;
+
+typedef struct	s_player
+{
+	t_coord		pos;
+	t_coord		dir;
+	t_coord		plane;
+}	t_player;
+
 typedef struct		s_game
 {
 	t_win			win;
 	t_map			map;
 	t_textures		textures;
 	t_parsing		parsing;
+	t_frame			frame;
+	t_player		player;
 }	t_game;
 
 #endif

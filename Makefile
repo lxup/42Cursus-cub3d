@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/19 22:48:41 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/20 11:55:50 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,8 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
 					init_map \
 					init_texture \
 					init_image \
+					init_vector \
+					init_coord \
 					))
 
 # PARSING
@@ -130,6 +132,8 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/hooks/, $(addsuffix .c, \
 # RAYCASTING
 SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
 					render \
+					raycasting \
+					raycasting_step \
 					))
 
 # UTILS

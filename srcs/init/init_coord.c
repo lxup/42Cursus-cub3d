@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_win.c                                         :+:      :+:    :+:   */
+/*   init_coord.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 15:50:24 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:00 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/20 11:17:44 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/20 11:17:55 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_init_win(t_game *game)
+int	ft_init_coord(t_coord *coord, double x, double y)
 {
-	game->win.mlx_ptr = NULL;
-	game->win.win_ptr = NULL;
-	game->win.height = -1;
-	game->win.width = -1;
+	coord->x = x;
+	coord->y = y;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 23:16:59 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/20 11:56:15 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		ft_init_win(t_game *game);
 int		ft_init_map(t_game *game, char *file);
 int		ft_init_texture(t_game *game);
 int		ft_init_image(t_game *game, t_image *img);
+int		ft_init_vector(t_vector *vec, int x, int y);
+int		ft_init_coord(t_coord *coord, double x, double y);
 
 /* ************************************************************************** */
 /*                                   PARSING                                  */
@@ -62,6 +64,8 @@ int		ft_hook_on_keyrelease(int keycode, t_game *game);
 /* ************************************************************************** */
 
 int		ft_render(t_game *game);
+int		ft_raycasting(t_game *game);
+void	ft_raycasting_step(t_game *game);
 
 /* ************************************************************************** */
 /*                                    EXIT                                    */

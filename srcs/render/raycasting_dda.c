@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_win.c                                         :+:      :+:    :+:   */
+/*   raycasting_dda.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 15:50:24 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:00 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/20 11:58:31 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/20 12:00:43 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_init_win(t_game *game)
+int	ft_raycasting_dda(t_game *game)
 {
-	game->win.mlx_ptr = NULL;
-	game->win.win_ptr = NULL;
-	game->win.height = -1;
-	game->win.width = -1;
-	return (1);
+	while (game->frame.hit == 0)
+	{
+		
+	}
 }
