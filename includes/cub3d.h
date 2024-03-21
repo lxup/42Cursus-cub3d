@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 19:40:41 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 11:37:35 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_init_image(t_game *game, t_image *img);
 int		ft_init_vector(t_vector *vec, int x, int y);
 int		ft_init_coord(t_coord *coord, double x, double y);
 int		ft_init_frame(t_frame *frame);
+int		ft_init_game(t_game *game);
 
 /* ************************************************************************** */
 /*                                   PARSING                                  */
@@ -74,6 +75,17 @@ int		ft_raycasting_draw(t_game *game, int x);
 int		ft_raycasting_draw_wall(t_game *game, int x);
 
 /* ************************************************************************** */
+/*                                   PLAYER                                   */
+/* ************************************************************************** */
+
+int		ft_move_player(t_game *game, t_player *player);
+int		ft_move_player_view_left(t_player *player);
+int		ft_move_player_view_right(t_player *player);
+int		ft_move_player_view_up(t_player *player);
+int		ft_move_player_view_down(t_player *player);
+int		ft_move_collision(t_game *game, t_player *player, double speed, int move);
+
+/* ************************************************************************** */
 /*                                    EXIT                                    */
 /* ************************************************************************** */
 
@@ -102,5 +114,6 @@ void	ft_print_frame(t_frame frame);
 /* ************************************************************************** */
 
 int		custom_mlx_pixel_put(t_image *img, int x, int y, int color);
-
+int		custom_mlx_get_screen_size(void *mlx_ptr, int *width, int *height);
+int		custom_mlx_destroy_display(void *mlx_ptr);
 #endif

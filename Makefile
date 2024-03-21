@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/20 19:36:20 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/21 11:01:20 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,12 @@ REVERSE			=	\033[7m
 
 # OS
 PLATFORM		=	$(shell uname -s)
+
+ifeq ($(PLATFORM), Darwin)
+	OS			=	macos
+else ifeq ($(PLATFORM), Linux)
+	OS			=	linux
+endif
 
 # **************************************************************************** #
 #                                   PROGRAM                                    #
@@ -109,6 +115,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
 					init_vector \
 					init_coord \
 					init_frame \
+					init_game \
 					))
 
 # PARSING
@@ -142,6 +149,13 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
 					raycasting_draw_wall \
 					))
 
+# PLAYER
+SRCS			+=	$(addprefix $(SRCS_DIR)/player/, $(addsuffix .c, \
+					move_player \
+					move_player_view \
+					move_collision \
+					))
+
 # UTILS
 SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
 					ft_2d_free \
@@ -156,6 +170,8 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
 # MLX
 SRCS			+=	$(addprefix $(SRCS_DIR)/mlx/, $(addsuffix .c, \
 					mlx_put_pixel \
+					$(OS)/mlx_get_screen_size \
+					$(OS)/mlx_destroy_display \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)

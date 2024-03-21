@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 19:37:37 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:05:31 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct	s_frame
 	t_coord		camera;
 	t_vector	step;
 	t_coord		wall;
+	t_vector	mouse;
 	int			hit;
 	char		hit_value;
 	int			side;
@@ -111,7 +112,17 @@ typedef struct	s_player
 	t_coord		pos;
 	t_coord		dir;
 	t_coord		plane;
+	int			move;
+	double		speed;
+	double		rot_speed;
 }	t_player;
+
+typedef struct	s_settings
+{
+	double		fov;
+	double		move_speed;
+	double		rot_speed;
+}	t_settings;
 
 typedef struct		s_game
 {
@@ -121,6 +132,7 @@ typedef struct		s_game
 	t_parsing		parsing;
 	t_frame			frame;
 	t_player		player;
+	t_settings		settings;
 }	t_game;
 
 #endif

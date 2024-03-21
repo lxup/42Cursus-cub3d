@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 19:01:14 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 19:51:21 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 10:40:54 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int	ft_parsing_player(t_game *game)
 	set_dir_player(game, game->map.content[game->map.spawn.y][game->map.spawn.x]);
 	game->map.content[game->map.spawn.y][game->map.spawn.x] = '0';
 	ft_init_coord(&game->player.pos, game->map.spawn.x + 0.5, game->map.spawn.y + 0.5);
+	game->player.speed = 0.05;
+	game->player.rot_speed = 0.05;
 	return (1);
 }

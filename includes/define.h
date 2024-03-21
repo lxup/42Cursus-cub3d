@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:03:17 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 20:12:27 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 11:56:47 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef enum e_error
 #  define KEY_ARROW_BOT		125
 #  define KEY_ARROW_LEFT	123
 #  define KEY_ARROW_RIGHT	124
+#  define KEY_SHIFT			257
+#  define KEY_CTRL			256
 # elif __linux__
 #  define KEY_ESC			65307
 #  define KEY_Q				113
@@ -104,23 +106,26 @@ typedef enum e_error
 #  define KEY_ARROW_BOT		65364
 #  define KEY_ARROW_LEFT	65361
 #  define KEY_ARROW_RIGHT	65363
+#  define KEY_SHIFT			65505
+#  define KEY_CTRL			65507
 # endif
 
 /* ************************************************************************** */
 /*                                   MOVE	                                  */
 /* ************************************************************************** */
 
-// Physical movement
-#  define M_UP				1
-#  define M_DOWN			2
-#  define M_LEFT			3
-#  define M_RIGHT			4
+# define M_UP				0x00001
+# define M_DOWN				0x00002
+# define M_LEFT				0x00004
+# define M_RIGHT			0x00008
 
-// View movement
-#  define M_VIEW_UP			5
-#  define M_VIEW_DOWN		6
-#  define M_VIEW_LEFT		7
-#  define M_VIEW_RIGHT		8
+# define M_VIEW_UP			0x00010
+# define M_VIEW_DOWN		0x00020
+# define M_VIEW_LEFT		0x00040
+# define M_VIEW_RIGHT		0x00080
+
+# define M_SPRINT			0x00100
+# define M_CROUCH			0x00200
 
 /* ************************************************************************** */
 /*                                  TEMPLATE                                  */

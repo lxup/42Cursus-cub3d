@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_win.c                                         :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 11:03:03 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 22:24:53 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/21 10:12:03 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/21 12:06:16 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_free_win(t_game *game)
+int	ft_init_game(t_game *game)
 {
-	free_image(game, &game->win.img);
-	if (game->win.mlx_ptr)
-	{
-		if (game->win.win_ptr)
-			mlx_destroy_window(game->win.mlx_ptr, game->win.win_ptr);
-		custom_mlx_destroy_display(game->win.mlx_ptr);
-		free(game->win.mlx_ptr);
-		game->win.mlx_ptr = NULL;
-	}
+	ft_init_vector(&game->frame.mouse, (int)game->win.width / 2, (int)game->win.height / 2);
+	
+	// Init settings
+	game->settings.fov = 1;
+	game->settings.move_speed = 0.05;
+	game->settings.rot_speed = 0.05;
 	return (1);
 }
