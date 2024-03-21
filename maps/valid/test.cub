@@ -1,11 +1,11 @@
-NO ./assets/wolfenstein/brick.xpm
-SO ./assets/wolfenstein/stone.xpm
+NO ./assets/wolfenstein/wood.xpm
+SO ./assets/wolfenstein/cave.xpm
 WE ./assets/wolfenstein/cave.xpm
 EA ./assets/wolfenstein/wood.xpm
 
 S ./assets/wolfenstein/guard.xpm
 
-F 112,112,112
+F 65,78,12
 C 56,56,56
 
 111     1111111111111111111111111   

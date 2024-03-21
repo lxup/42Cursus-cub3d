@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/21 11:01:20 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/21 17:41:34 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,6 +147,8 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
 					raycasting_wall \
 					raycasting_draw \
 					raycasting_draw_wall \
+					raycasting_draw_floor \
+					raycasting_draw_ceiling \
 					))
 
 # PLAYER

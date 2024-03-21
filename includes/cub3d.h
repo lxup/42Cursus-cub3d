@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 11:37:35 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 20:14:51 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ int		ft_hooks(t_game *game);
 int		ft_hook_on_window_close(t_game *game);
 int		ft_hook_on_keypress(int keycode, t_game *game);
 int		ft_hook_on_keyrelease(int keycode, t_game *game);
+int		ft_hook_on_mousemove(int x, int y, t_game *game);
+int		ft_hook_on_mousepress(int button, int x, int y, t_game *game);
+int		ft_hook_on_mouserelease(int button, int x, int y, t_game *game);
 
 /* ************************************************************************** */
 /*                                 RAYCASTING                                 */
@@ -73,14 +76,16 @@ int		ft_raycasting_dda(t_game *game);
 int		ft_raycasting_wall(t_game *game);
 int		ft_raycasting_draw(t_game *game, int x);
 int		ft_raycasting_draw_wall(t_game *game, int x);
+int		ft_raycasting_draw_floor(t_game *game, int x);
+int		ft_raycasting_draw_ceiling(t_game *game, int x);
 
 /* ************************************************************************** */
 /*                                   PLAYER                                   */
 /* ************************************************************************** */
 
 int		ft_move_player(t_game *game, t_player *player);
-int		ft_move_player_view_left(t_player *player);
-int		ft_move_player_view_right(t_player *player);
+int		ft_move_player_view_left(t_game *game, t_player *player);
+int		ft_move_player_view_right(t_game *game, t_player *player);
 int		ft_move_player_view_up(t_player *player);
 int		ft_move_player_view_down(t_player *player);
 int		ft_move_collision(t_game *game, t_player *player, double speed, int move);

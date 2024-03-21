@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:54:25 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 11:37:56 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 18:16:18 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	ft_move_player(t_game *game, t_player *player)
 	if (player->move & M_RIGHT)
 		ft_move_player_right(game, player, speed);
 	if (player->move & M_VIEW_LEFT)
-		ft_move_player_view_left(player);
+		ft_move_player_view_left(game, player);
 	if (player->move & M_VIEW_RIGHT)
-		ft_move_player_view_right(player);
+		ft_move_player_view_right(game, player);
 	if (player->move & M_VIEW_UP)
 		ft_move_player_view_up(player);
 	if (player->move & M_VIEW_DOWN)

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 18:31:30 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 12:07:54 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 20:00:20 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	ft_gameplay(t_game *game)
 		if (custom_mlx_get_screen_size(game->win.mlx_ptr, &game->win.width, \
 			&game->win.height))
 			return (ft_exit(game, ERR_MLX, "Mlx failed to get screen size"));
+	if (game->win.width > MAX_WIDTH)
+		game->win.width = MAX_WIDTH;
+	if (game->win.height > MAX_HEIGHT)
+		game->win.height = MAX_HEIGHT;
 	game->win.win_ptr = mlx_new_window(game->win.mlx_ptr, \
 		game->win.width, game->win.height, WINDOW_TITLE);
 	if (game->win.win_ptr == NULL)

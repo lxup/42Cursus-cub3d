@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:03:17 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 11:56:47 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 20:13:09 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef enum e_error
 
 # define WINDOW_TITLE 		"cub3d"
 # define LIFE_COUNT			4
+# define MAX_WIDTH			1920
+# define MAX_HEIGHT			1080
 
 /* ************************************************************************** */
 /*                                MAP SETTINGS                                */
@@ -108,6 +110,30 @@ typedef enum e_error
 #  define KEY_ARROW_RIGHT	65363
 #  define KEY_SHIFT			65505
 #  define KEY_CTRL			65507
+# endif
+
+/* ************************************************************************** */
+/*                                   HOOK                                     */
+/* ************************************************************************** */
+
+# ifdef __APPLE__
+#  define H_KEYPRESS		2
+#  define H_KEYRELEASE		3
+#  define H_MOUSEMOVE		6
+#  define H_EXIT			17
+#  define H_MASK_KEYPRESS	0
+#  define H_MASK_KEYRELEASE	0
+#  define H_MASK_MOUSEMOVE	0
+#  define H_MASK_EXIT		1L << 0
+# elif __linux__
+#  define H_KEYPRESS		2
+#  define H_KEYRELEASE		3
+#  define H_MOUSEMOVE		6
+#  define H_EXIT			17
+#  define H_MASK_KEYPRESS	1L << 0
+#  define H_MASK_KEYRELEASE	2L << 0
+#  define H_MASK_MOUSEMOVE	1L << 6
+#  define H_MASK_EXIT		0
 # endif
 
 /* ************************************************************************** */

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 12:05:31 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/21 18:54:36 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,15 @@ typedef struct s_textures
 	t_color		ceiling;
 }	t_textures;
 
+typedef struct s_texture
+{
+	int			color;
+	t_vector	tex;
+	double		step;
+	double		pos;
+}	t_texture;
+
+
 typedef struct	s_parsing
 {
 	char		*line;
@@ -122,6 +131,10 @@ typedef struct	s_settings
 	double		fov;
 	double		move_speed;
 	double		rot_speed;
+	double		cos_rot_speed;
+	double		sin_rot_speed;
+	double		cos_neg_rot_speed;
+	double		sin_neg_rot_speed;
 }	t_settings;
 
 typedef struct		s_game

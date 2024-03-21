@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_draw.c                                  :+:      :+:    :+:   */
+/*   raycasting_draw_ceiling.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 17:12:36 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 18:37:51 by lquehec          ###   ########.fr       */
+/*   Created: 2024/03/21 17:40:44 by lquehec           #+#    #+#             */
+/*   Updated: 2024/03/21 17:53:25 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_raycasting_draw(t_game *game, int x)
+static int	ft_raycasting_draw_ceiling_verline(t_game *game, int x, int y, int draw_end)
 {
-	if (game->frame.draw_end < game->win.height)
-		ft_raycasting_draw_floor(game, x);
-	if (game->frame.draw_start > 0)
-		ft_raycasting_draw_ceiling(game, x);
-	ft_raycasting_draw_wall(game, x);
+	int	color;
+
+	color = ft_color_to_int(game->textures.ceiling);
+	while (y < draw_end)
+	{
+		custom_mlx_pixel_put(&game->win.img, x, y, color);
+		y++;
+	}
+	return (1);
+}
+
+int	ft_raycasting_draw_ceiling(t_game *game, int x)
+{
+	ft_raycasting_draw_ceiling_verline(game, x, 0, game->frame.draw_start);
 	return (1);
 }
