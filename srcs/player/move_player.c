@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:54:25 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 18:16:18 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:55:15 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	ft_move_find_new_pos(t_game *game, t_player *player, double speed, in
 	(void)player;
 	(void)speed;
 	(void)move;
+	// this function allows to find the new position of the player to not be blocked by a wall
 	return (0);
 }
 
@@ -62,7 +63,7 @@ int	ft_move_player(t_game *game, t_player *player)
 	double	speed;
 
 	if (player->move & M_SPRINT)
-		speed = player->speed * 2;
+		speed = player->speed * 1.25;
 	else
 		speed = player->speed;
 	if (player->move & M_UP)

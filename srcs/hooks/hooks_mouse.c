@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:22:55 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 20:46:36 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:25:14 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	mouse_move_right(t_game *game, int diff_x, int x, int y)
 	}
 	if (x > (int)game->win.width * 0.7)
 	{
-		mlx_mouse_move(game->win.mlx_ptr, game->win.win_ptr, (int)game->win.width / 2, y);
+		custom_mlx_mouse_move(game->win.mlx_ptr, game->win.win_ptr, (int)game->win.width / 2, y);
 		game->frame.mouse.x = (int)game->win.width / 2;
 	}
 	return (1);
@@ -38,7 +38,7 @@ static int	mouse_move_left(t_game *game, int diff_x, int x, int y)
 	}
 	if (x < (int)game->win.width * 0.3)
 	{
-		mlx_mouse_move(game->win.mlx_ptr, game->win.win_ptr, (int)game->win.width / 2, y);
+		custom_mlx_mouse_move(game->win.mlx_ptr, game->win.win_ptr, (int)game->win.width / 2, y);
 		game->frame.mouse.x = (int)game->win.width / 2;
 	}
 	return (1);
@@ -52,7 +52,7 @@ int	ft_hook_on_mousemove(int x, int y, t_game *game)
 	if (diff_x > 10)
 		diff_x = 10;
 	if (y < (int)(game->win.height * 0.3) || y > (int)(game->win.height * 0.7))
-		mlx_mouse_move(game->win.mlx_ptr, game->win.win_ptr, x, (int)game->win.height / 2);
+		custom_mlx_mouse_move(game->win.mlx_ptr, game->win.win_ptr, x, (int)game->win.height / 2);
 	if (x > game->frame.mouse.x)
 		mouse_move_right(game, diff_x, x, y);
 	else if (x < game->frame.mouse.x)

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 20:14:51 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:31:47 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_init_vector(t_vector *vec, int x, int y);
 int		ft_init_coord(t_coord *coord, double x, double y);
 int		ft_init_frame(t_frame *frame);
 int		ft_init_game(t_game *game);
+int		ft_init_player(t_game *game);
 
 /* ************************************************************************** */
 /*                                   PARSING                                  */
@@ -51,7 +52,6 @@ int		ft_parsing_map(t_game *game, char *line);
 int		ft_parsing_map_check(t_game *game);
 int		ft_parsing_map_create(t_game *game);
 int		ft_parsing_map_leak(t_game *game, int x, int y);
-int		ft_parsing_player(t_game *game);
 
 /* ************************************************************************** */
 /*                                   HOOKS                                    */
@@ -78,6 +78,13 @@ int		ft_raycasting_draw(t_game *game, int x);
 int		ft_raycasting_draw_wall(t_game *game, int x);
 int		ft_raycasting_draw_floor(t_game *game, int x);
 int		ft_raycasting_draw_ceiling(t_game *game, int x);
+
+/* ************************************************************************** */
+/*                                   BONUS                                    */
+/* ************************************************************************** */
+
+int		ft_minimap(t_game *game);
+int		ft_minimap_draw(t_game *game, t_vector map_pos, t_vector map_size);
 
 /* ************************************************************************** */
 /*                                   PLAYER                                   */
@@ -121,4 +128,9 @@ void	ft_print_frame(t_frame frame);
 int		custom_mlx_pixel_put(t_image *img, int x, int y, int color);
 int		custom_mlx_get_screen_size(void *mlx_ptr, int *width, int *height);
 int		custom_mlx_destroy_display(void *mlx_ptr);
+int		custom_mlx_mouse_move(void *mlx_ptr, void *win_ptr, int x, int y);
+int		custom_mlx_mouse_hide(void *mlx_ptr, void *win_ptr);
+int		custom_mlx_draw_square(t_image *img, t_vector start, t_vector end, int color);
+int		custom_mlx_draw_circle(t_image *img, t_coord origin, int radius, int color);
+int		custom_mlx_draw_line(t_image *img, t_coord start, t_coord end, int color);
 #endif

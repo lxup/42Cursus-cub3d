@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_player.c                                   :+:      :+:    :+:   */
+/*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 19:01:14 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 10:40:54 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:16:42 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ static int	set_dir_player(t_game *game, char c)
 	return (1);
 }
 
-int	ft_parsing_player(t_game *game)
+int	ft_init_player(t_game *game)
 {
 	// ft_init_vector(&game->player.pos, game->map.spawn.x, game->map.spawn.y);
 	set_dir_player(game, game->map.content[game->map.spawn.y][game->map.spawn.x]);
 	game->map.content[game->map.spawn.y][game->map.spawn.x] = '0';
 	ft_init_coord(&game->player.pos, game->map.spawn.x + 0.5, game->map.spawn.y + 0.5);
-	game->player.speed = 0.05;
-	game->player.rot_speed = 0.05;
+	game->player.speed = game->settings.move_speed;
+	game->player.rot_speed = game->settings.rot_speed;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:26:28 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 19:54:38 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:36:17 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ static int	set_texture(t_game *game, t_texture *texture, t_image *img_src)
 {
 	texture->step = 1.0 * img_src->size.x / game->frame.line_height;
 	texture->pos = (game->frame.draw_start - game->win.height / 2 + game->frame.line_height / 2) * texture->step;
-	texture->tex.x = (int)game->frame.wall.x * (double)img_src->size.x;
-	if (game->frame.side == 0 && game->frame.ray_dir.x > 0)
-		texture->tex.x = img_src->size.x - texture->tex.x - 1;
-	if (game->frame.side == 1 && game->frame.ray_dir.y < 0)
+	texture->tex.x = (int)(game->frame.wall.x * (double)img_src->size.x);
+	
+	if ((game->frame.side == 0 && game->frame.ray_dir.x > 0)
+		|| (game->frame.side == 1 && game->frame.ray_dir.y < 0))
 		texture->tex.x = img_src->size.x - texture->tex.x - 1;
 	return (1);
 }
@@ -92,7 +92,7 @@ int	ft_raycasting_draw_wall(t_game *game, int x)
 	{
 		texture.tex.y = (int)texture.pos;
 		texture.pos += texture.step;
-		texture.color = custom_mlx_get_pixel_color(img_src, texture.tex.x, texture.tex.y);
+		texture.color = custom_mlx_get_pixel_color(img_src, texture.tex.y, texture.tex.x);
 		custom_mlx_pixel_put(&game->win.img, x, game->frame.draw_start, texture.color);
 		game->frame.draw_start++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:27:16 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 10:10:49 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 11:41:48 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_render(t_game *game)
 {
 	reset_frame(game);
 	ft_raycasting(game);
+	ft_minimap(game);
 	ft_move_player(game, &game->player);
 	if (game->win.img.img)
 		mlx_put_image_to_window(game->win.mlx_ptr, game->win.win_ptr, \

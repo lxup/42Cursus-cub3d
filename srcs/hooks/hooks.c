@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 19:03:07 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 20:12:25 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:23:39 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_hooks(t_game *game)
 	mlx_hook(game->win.win_ptr, H_KEYPRESS, H_MASK_KEYPRESS, &ft_hook_on_keypress, game);
 	mlx_hook(game->win.win_ptr, H_KEYRELEASE, H_MASK_KEYRELEASE, &ft_hook_on_keyrelease, game);
 	mlx_hook(game->win.win_ptr, H_EXIT, H_MASK_EXIT, &ft_hook_on_window_close, game);
-	mlx_mouse_hide(game->win.mlx_ptr, game->win.win_ptr);
+	custom_mlx_mouse_hide(game->win.mlx_ptr, game->win.win_ptr);
 	mlx_hook(game->win.win_ptr, H_MOUSEMOVE, H_MASK_MOUSEMOVE, &ft_hook_on_mousemove, game);
 	return (1);
 }

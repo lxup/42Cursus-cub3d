@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/21 17:41:34 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/22 13:27:56 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/init/, $(addsuffix .c, \
 					init_coord \
 					init_frame \
 					init_game \
+					init_player \
 					))
 
 # PARSING
@@ -128,7 +129,6 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/parsing/, $(addsuffix .c, \
 					map/parsing_map_check \
 					map/parsing_map_create \
 					map/parsing_map_leak \
-					parsing_player \
 					))
 
 # HOOKS
@@ -149,6 +149,8 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
 					raycasting_draw_wall \
 					raycasting_draw_floor \
 					raycasting_draw_ceiling \
+					minimap \
+					minimap_draw \
 					))
 
 # PLAYER
@@ -172,8 +174,13 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/utils/, $(addsuffix .c, \
 # MLX
 SRCS			+=	$(addprefix $(SRCS_DIR)/mlx/, $(addsuffix .c, \
 					mlx_put_pixel \
+					mlx_draw_square \
+					mlx_draw_circle \
+					mlx_draw_line \
 					$(OS)/mlx_get_screen_size \
 					$(OS)/mlx_destroy_display \
+					$(OS)/mlx_mouse_move \
+					$(OS)/mlx_mouse_hide \
 					))
 
 OBJS			=	$(SRCS:%.c=$(OBJ_PATH)/%.o)

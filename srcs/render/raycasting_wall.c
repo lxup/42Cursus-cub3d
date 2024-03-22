@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:52:25 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 18:09:31 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:54:46 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	ft_raycasting_wall(t_game *game)
 	if (game->frame.draw_end < 0)
 		game->frame.draw_end = 0;
 	if (game->frame.side == 0)
-		game->frame.wall.x = (int)(game->player.pos.y \
-			+ game->frame.perp_wall_dist * game->frame.ray_dir.y);
+		game->frame.wall.x = game->player.pos.y \
+			+ game->frame.perp_wall_dist * game->frame.ray_dir.y;
 	else
-		game->frame.wall.x = (int)(game->player.pos.x \
-			+ game->frame.perp_wall_dist * game->frame.ray_dir.x);
+		game->frame.wall.x = game->player.pos.x \
+			+ game->frame.perp_wall_dist * game->frame.ray_dir.x;
+	game->frame.wall.x -= (int)game->frame.wall.x;
 	return (1);
 }

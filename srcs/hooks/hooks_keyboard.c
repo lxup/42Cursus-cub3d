@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:21:47 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 11:56:40 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:47:35 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_hook_on_keypress(int keycode, t_game *game)
 		game->player.move |= M_SPRINT;
 	else if (keycode == KEY_CTRL)
 		game->player.move |= M_CROUCH;
+	else if (keycode == KEY_TAB)
+		game->player.move |= M_MAP;
 	return (1);
 }
 
@@ -63,5 +65,7 @@ int	ft_hook_on_keyrelease(int keycode, t_game *game)
 		game->player.move &= ~M_SPRINT;
 	else if (keycode == KEY_CTRL)
 		game->player.move &= ~M_CROUCH;
+	else if (keycode == KEY_TAB)
+		game->player.move &= ~M_MAP;
 	return (1);
 }

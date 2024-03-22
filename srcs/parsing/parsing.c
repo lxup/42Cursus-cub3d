@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:24:26 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 19:00:50 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 12:17:01 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ int	ft_parsing(t_game *game)
 	ft_parsing_open_fd(game);
 	ft_parsing_get_map(game);
 	ft_parsing_map_check(game);
-	ft_parsing_player(game);
 	return (1);
 }
