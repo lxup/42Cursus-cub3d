@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:30:59 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 10:54:25 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:41:38 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_map_line(t_game *game, char *line)
 			game->map.spawn.x = i;
 			game->map.spawn.y = game->map.size.y;
 		}
-		else if (!ft_contains_char(" 012", line[i]))
+		else if (!ft_contains_char(" 01D", line[i]))
 			return (ft_exit(game, ERR_MAP, "Invalid character in the map."));
 		i++;
 	}
@@ -53,7 +53,7 @@ int	ft_parsing_map(t_game *game, char *line)
 	line[ft_strlen(line) - 1] = 0;
 	check_map_line(game, line);
 	add_node_map(game, line);
-	game->parsing.map = 1;
+	game->parsing.step |= PARSING_MAP;
 	if (game->map.size.y == -1)
 		game->map.size.y = 0;
 	game->map.size.y++;

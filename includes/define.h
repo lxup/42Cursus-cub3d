@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:03:17 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 12:47:21 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:35:09 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,20 @@ typedef enum e_error
 
 # define WALL 				'1'
 # define EMPTY 				'0'
+
+/* ************************************************************************** */
+/*                                   PARSING                                  */
+/* ************************************************************************** */
+
+# define PARSING_NO			0x00001
+# define PARSING_SO			0x00002
+# define PARSING_WE			0x00004
+# define PARSING_EA			0x00008
+# define PARSING_E			0x00010
+# define PARSING_D			0x00020
+# define PARSING_F			0x00040
+# define PARSING_C			0x00080
+# define PARSING_MAP		0x00100
 
 /* ************************************************************************** */
 /*                                    ASSETS                                  */
@@ -128,15 +142,15 @@ typedef enum e_error
 #  define H_MASK_KEYPRESS	0
 #  define H_MASK_KEYRELEASE	0
 #  define H_MASK_MOUSEMOVE	0
-#  define H_MASK_EXIT		1L << 0
+#  define H_MASK_EXIT		0x1
 # elif __linux__
 #  define H_KEYPRESS		2
 #  define H_KEYRELEASE		3
 #  define H_MOUSEMOVE		6
 #  define H_EXIT			17
-#  define H_MASK_KEYPRESS	1L << 0
-#  define H_MASK_KEYRELEASE	2L << 0
-#  define H_MASK_MOUSEMOVE	1L << 6
+#  define H_MASK_KEYPRESS	0x1
+#  define H_MASK_KEYRELEASE	0x2
+#  define H_MASK_MOUSEMOVE	0x40
 #  define H_MASK_EXIT		0
 # endif
 

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:24:26 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 12:17:01 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:49:08 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static int	ft_parsing_open_fd(t_game *game)
 	int		len;
 
 	len = ft_strlen(game->map.path);
-	if (len < 4 || ft_strncmp(game->map.path + len - 4, FILE_EXTENSION, ft_strlen(FILE_EXTENSION)))
+	if (len < 4 || ft_strncmp(game->map.path + len - 4, FILE_EXTENSION, \
+		ft_strlen(FILE_EXTENSION)))
 		ft_exit(game, ERR_ARGS, "Invalid file extension, need a .cub file.");
 	game->map.fd = open(game->map.path, O_RDONLY);
 	if (game->map.fd < 0)
@@ -41,7 +42,6 @@ static int	ft_parsing_get_map(t_game *game)
 	game->map.fd = -1;
 	return (1);
 }
-
 
 int	ft_parsing(t_game *game)
 {

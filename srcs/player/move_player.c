@@ -6,26 +6,16 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:54:25 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 11:55:15 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 18:23:35 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_move_find_new_pos(t_game *game, t_player *player, double speed, int move)
-{
-	(void)game;
-	(void)player;
-	(void)speed;
-	(void)move;
-	// this function allows to find the new position of the player to not be blocked by a wall
-	return (0);
-}
-
 static int	ft_move_player_up(t_game *game, t_player *player, double speed)
 {
 	if (ft_move_collision(game, player, speed, M_UP))
-		return (ft_move_find_new_pos(game, player, speed, M_UP));
+		return (0);
 	player->pos.x += player->dir.x * speed;
 	player->pos.y += player->dir.y * speed;
 	return (1);
@@ -34,7 +24,7 @@ static int	ft_move_player_up(t_game *game, t_player *player, double speed)
 static int	ft_move_player_down(t_game *game, t_player *player, double speed)
 {
 	if (ft_move_collision(game, player, speed, M_DOWN))
-		return (ft_move_find_new_pos(game, player, speed, M_DOWN));
+		return (0);
 	player->pos.x -= player->dir.x * speed;
 	player->pos.y -= player->dir.y * speed;
 	return (1);
@@ -43,7 +33,7 @@ static int	ft_move_player_down(t_game *game, t_player *player, double speed)
 static int	ft_move_player_left(t_game *game, t_player *player, double speed)
 {
 	if (ft_move_collision(game, player, speed, M_LEFT))
-		return (ft_move_find_new_pos(game, player, speed, M_LEFT));
+		return (0);
 	player->pos.x -= player->plane.x * speed;
 	player->pos.y -= player->plane.y * speed;
 	return (1);
@@ -52,7 +42,7 @@ static int	ft_move_player_left(t_game *game, t_player *player, double speed)
 static int	ft_move_player_right(t_game *game, t_player *player, double speed)
 {
 	if (ft_move_collision(game, player, speed, M_RIGHT))
-		return (ft_move_find_new_pos(game, player, speed, M_RIGHT));
+		return (0);
 	player->pos.x += player->plane.x * speed;
 	player->pos.y += player->plane.y * speed;
 	return (1);
@@ -63,7 +53,7 @@ int	ft_move_player(t_game *game, t_player *player)
 	double	speed;
 
 	if (player->move & M_SPRINT)
-		speed = player->speed * 1.25;
+		speed = game->settings.sprint_speed;
 	else
 		speed = player->speed;
 	if (player->move & M_UP)

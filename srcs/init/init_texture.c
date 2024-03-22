@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:46:14 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/19 21:42:01 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:37:16 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_init_texture(t_game *game)
 	ft_init_image(game, &game->textures.wall_so);
 	ft_init_image(game, &game->textures.wall_we);
 	ft_init_image(game, &game->textures.wall_ea);
-	ft_init_image(game, &game->textures.sprite);
+	ft_init_image(game, &game->textures.ennemy);
+	ft_init_image(game, &game->textures.door);
 	init_color(&game->textures.ceiling);
 	init_color(&game->textures.floor);
-	// Add other textures here
 	return (1);
 }

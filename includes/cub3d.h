@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 13:31:47 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 18:06:26 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		ft_raycasting_draw_ceiling(t_game *game, int x);
 
 int		ft_minimap(t_game *game);
 int		ft_minimap_draw(t_game *game, t_vector map_pos, t_vector map_size);
+int		ft_minimap_widget(t_game *game, t_vector map_pos, t_vector map_size);
 
 /* ************************************************************************** */
 /*                                   PLAYER                                   */
@@ -95,7 +96,8 @@ int		ft_move_player_view_left(t_game *game, t_player *player);
 int		ft_move_player_view_right(t_game *game, t_player *player);
 int		ft_move_player_view_up(t_player *player);
 int		ft_move_player_view_down(t_player *player);
-int		ft_move_collision(t_game *game, t_player *player, double speed, int move);
+int		ft_move_collision(t_game *game, t_player *player, double speed, \
+			int move);
 
 /* ************************************************************************** */
 /*                                    EXIT                                    */
@@ -130,7 +132,12 @@ int		custom_mlx_get_screen_size(void *mlx_ptr, int *width, int *height);
 int		custom_mlx_destroy_display(void *mlx_ptr);
 int		custom_mlx_mouse_move(void *mlx_ptr, void *win_ptr, int x, int y);
 int		custom_mlx_mouse_hide(void *mlx_ptr, void *win_ptr);
-int		custom_mlx_draw_square(t_image *img, t_vector start, t_vector end, int color);
-int		custom_mlx_draw_circle(t_image *img, t_coord origin, int radius, int color);
-int		custom_mlx_draw_line(t_image *img, t_coord start, t_coord end, int color);
+int		custom_mlx_draw_square(t_image *img, t_vector start, t_vector end, \
+			int color);
+int		custom_mlx_draw_circle(t_image *img, t_coord origin, int radius, \
+			int color);
+int		custom_mlx_draw_line(t_image *img, t_coord start, t_coord end, \
+			int color);
+int		custom_mlx_get_pixel_color(t_image *img, int x, int y);
+
 #endif

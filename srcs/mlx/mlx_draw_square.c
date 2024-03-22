@@ -6,13 +6,14 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 12:07:47 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 12:32:58 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:39:48 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	custom_mlx_draw_square(t_image *img, t_vector start, t_vector end, int color)
+int	custom_mlx_draw_square(t_image *img, t_vector start, t_vector end, \
+	int color)
 {
 	t_vector	origin;
 

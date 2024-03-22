@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:25:30 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/18 19:27:34 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:44:08 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ static int	rgb_string_to_int(char **str)
 		result += **str - 48;
 		*str += 1;
 	}
-	return (result > 255 ? -1 : result);
+	if (result > 255)
+		return (-1);
+	return (result);
 }
 
 int	ft_parsing_color(t_game *game, char *line)
@@ -49,11 +51,13 @@ int	ft_parsing_color(t_game *game, char *line)
 	color->g = rgb_string_to_int(&cursor);
 	color->b = rgb_string_to_int(&cursor);
 	if (color->r < 0 || color->g < 0 || color->b < 0 \
-		|| color->r > 255 || color->g > 255 || color->b > 255 || *cursor != '\0')
-		ft_exit(game, ERR_ARGS, "Invalid color.\nSyntax: R,G,B\nR,G,B must be between 0 and 255.");
+		|| color->r > 255 || color->g > 255 || color->b > 255 \
+		|| *cursor != '\0')
+		ft_exit(game, ERR_ARGS, "Invalid color.\nSyntax: R,G,B\nR,G,B"\
+			" must be between 0 and 255.");
 	if (color == &game->textures.floor)
-		game->parsing.f = 1;
+		game->parsing.step |= PARSING_F;
 	else
-		game->parsing.c = 1;
+		game->parsing.step |= PARSING_C;
 	return (1);
 }

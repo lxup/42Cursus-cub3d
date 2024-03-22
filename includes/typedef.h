@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 18:54:36 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 18:23:10 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_vector
 	int		y;
 }	t_vector;
 
-typedef struct	s_coord
+typedef struct s_coord
 {
 	double		x;
 	double		y;
@@ -51,10 +51,10 @@ typedef struct s_win
 	void		*win_ptr;
 	int			height;
 	int			width;
-	t_image		img;
+	t_image		frame;
 }	t_win;
 
-typedef struct	s_color
+typedef struct s_color
 {
 	int			r;
 	int			g;
@@ -68,7 +68,8 @@ typedef struct s_textures
 	t_image		wall_so;
 	t_image		wall_we;
 	t_image		wall_ea;
-	t_image		sprite;
+	t_image		ennemy;
+	t_image		door;
 	t_color		floor;
 	t_color		ceiling;
 }	t_textures;
@@ -81,22 +82,14 @@ typedef struct s_texture
 	double		pos;
 }	t_texture;
 
-
-typedef struct	s_parsing
+typedef struct s_parsing
 {
 	char		*line;
-	int			no;
-	int			so;
-	int			we;
-	int			ea;
-	int			s;
-	int			f;
-	int			c;
-	int			map;
+	int			step;
 	int			succes;
 }	t_parsing;
 
-typedef struct	s_frame
+typedef struct s_frame
 {
 	t_coord		ray_dir;
 	t_vector	map;
@@ -116,7 +109,7 @@ typedef struct	s_frame
 	int			color;
 }	t_frame;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_coord		pos;
 	t_coord		dir;
@@ -126,10 +119,11 @@ typedef struct	s_player
 	double		rot_speed;
 }	t_player;
 
-typedef struct	s_settings
+typedef struct s_settings
 {
 	double		fov;
 	double		move_speed;
+	double		sprint_speed;
 	double		rot_speed;
 	double		cos_rot_speed;
 	double		sin_rot_speed;
@@ -137,7 +131,7 @@ typedef struct	s_settings
 	double		sin_neg_rot_speed;
 }	t_settings;
 
-typedef struct		s_game
+typedef struct s_game
 {
 	t_win			win;
 	t_map			map;

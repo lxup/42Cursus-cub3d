@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/22 13:27:56 by lquehec          ###   ########.fr        #
+#    Updated: 2024/03/22 17:57:22 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,6 +151,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/render/, $(addsuffix .c, \
 					raycasting_draw_ceiling \
 					minimap \
 					minimap_draw \
+					minimap_widget \
 					))
 
 # PLAYER
@@ -177,6 +178,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/mlx/, $(addsuffix .c, \
 					mlx_draw_square \
 					mlx_draw_circle \
 					mlx_draw_line \
+					mlx_get_pixel_color \
 					$(OS)/mlx_get_screen_size \
 					$(OS)/mlx_destroy_display \
 					$(OS)/mlx_mouse_move \

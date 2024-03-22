@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:03:03 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 22:24:53 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 15:48:59 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_free_win(t_game *game)
 {
-	free_image(game, &game->win.img);
+	free_image(game, &game->win.frame);
 	if (game->win.mlx_ptr)
 	{
 		if (game->win.win_ptr)

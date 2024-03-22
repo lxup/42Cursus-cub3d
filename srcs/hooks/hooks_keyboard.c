@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:21:47 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 12:47:35 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:19:17 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_hook_on_keypress(int keycode, t_game *game)
 {
-	printf("ft_hook_on_keypress: %d\n", keycode);
 	if (keycode == KEY_ESC)
 		return (ft_hook_on_window_close(game));
 	else if (keycode == KEY_W)
@@ -44,7 +43,6 @@ int	ft_hook_on_keypress(int keycode, t_game *game)
 
 int	ft_hook_on_keyrelease(int keycode, t_game *game)
 {
-	printf("ft_hook_on_keyrelease: %d\n", keycode);
 	if (keycode == KEY_W)
 		game->player.move &= ~M_UP;
 	else if (keycode == KEY_S)

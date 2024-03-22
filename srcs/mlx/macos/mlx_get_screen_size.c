@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:04:23 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 22:30:36 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:40:42 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 int	custom_mlx_get_screen_size(void *mlx_ptr, int *width, int *height)
 {
-	CGRect mainScreenRect;
-	
+	CGRect	mainscreenrect;
+
 	(void)mlx_ptr;
-	mainScreenRect = CGDisplayBounds(CGMainDisplayID());
-	*width = (int)CGRectGetWidth(mainScreenRect);
-    *height = (int)CGRectGetHeight(mainScreenRect);
+	mainscreenrect = CGDisplayBounds(CGMainDisplayID());
+	*width = (int)CGRectGetWidth(mainscreenrect);
+	*height = (int)CGRectGetHeight(mainscreenrect);
 	return (0);
 }

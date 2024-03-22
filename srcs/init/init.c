@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:40:37 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/20 19:41:26 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/03/22 17:37:20 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,7 @@
 static int	ft_init_parsing(t_game *game)
 {
 	game->parsing.line = NULL;
-	game->parsing.no = 0;
-	game->parsing.so = 0;
-	game->parsing.we = 0;
-	game->parsing.ea = 0;
-	game->parsing.s = 0;
-	game->parsing.f = 0;
-	game->parsing.c = 0;
-	game->parsing.map = 0;
+	game->parsing.step = 0;
 	game->parsing.succes = 0;
 	return (1);
 }
