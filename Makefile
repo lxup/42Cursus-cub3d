@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/03/22 17:57:22 by lquehec          ###   ########.fr        #
+#    Updated: 2024/05/02 16:57:05 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,6 +159,7 @@ SRCS			+=	$(addprefix $(SRCS_DIR)/player/, $(addsuffix .c, \
 					move_player \
 					move_player_view \
 					move_collision \
+					move_speed \
 					))
 
 # UTILS

@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:54:25 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 18:23:35 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/02 16:56:09 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int	ft_move_player_left(t_game *game, t_player *player, double speed)
 {
 	if (ft_move_collision(game, player, speed, M_LEFT))
 		return (0);
-	player->pos.x -= player->plane.x * speed;
-	player->pos.y -= player->plane.y * speed;
+	player->pos.x += player->dir.y * speed;
+	player->pos.y -= player->dir.x * speed;
 	return (1);
 }
 
@@ -43,8 +43,8 @@ static int	ft_move_player_right(t_game *game, t_player *player, double speed)
 {
 	if (ft_move_collision(game, player, speed, M_RIGHT))
 		return (0);
-	player->pos.x += player->plane.x * speed;
-	player->pos.y += player->plane.y * speed;
+	player->pos.x -= player->dir.y * speed;
+	player->pos.y += player->dir.x * speed;
 	return (1);
 }
 
@@ -52,10 +52,7 @@ int	ft_move_player(t_game *game, t_player *player)
 {
 	double	speed;
 
-	if (player->move & M_SPRINT)
-		speed = game->settings.sprint_speed;
-	else
-		speed = player->speed;
+	ft_move_speed(game, player, &speed);
 	if (player->move & M_UP)
 		ft_move_player_up(game, player, speed);
 	if (player->move & M_DOWN)

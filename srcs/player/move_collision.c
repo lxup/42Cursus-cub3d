@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:00:21 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:41:02 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/02 16:49:47 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	ft_move_collision(t_game *game, t_player *player, double speed, int move)
 	}
 	else if (move == M_LEFT)
 	{
-		new_pos.x -= player->plane.x * speed;
-		new_pos.y -= player->plane.y * speed;
+		new_pos.x += player->dir.y * speed;
+		new_pos.y -= player->dir.x * speed;
 	}
 	else if (move == M_RIGHT)
 	{
-		new_pos.x += player->plane.x * speed;
-		new_pos.y += player->plane.y * speed;
+		new_pos.x -= player->dir.y * speed;
+		new_pos.y += player->dir.x * speed;
 	}
 	return (is_blocking(game, new_pos));
 }

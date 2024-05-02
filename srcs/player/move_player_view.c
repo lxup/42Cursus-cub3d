@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:59:02 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/21 20:52:27 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/02 16:31:18 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	ft_move_player_view_right(t_game *game, t_player *player)
 
 int	ft_move_player_view_up(t_player *player)
 {
-	printf("ft_move_player_view_up\n");
 	(void)player;
 	return (1);
 }
