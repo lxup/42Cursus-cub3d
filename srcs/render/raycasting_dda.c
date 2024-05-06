@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:58:31 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:55:35 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:18:54 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ static int	check_hit(t_game *game)
 {
 	if (game->frame.hit_value == '1')
 		game->frame.hit = 1;
-	else if (game->frame.hit_value == 'D')
-	{
-		game->frame.hit = 1;
-		game->frame.hit_value = 'D';
-	}
 	else if (game->frame.hit_value == '0')
 		game->frame.hit = 0;
 	return (1);
 }
+	// else if (game->frame.hit_value == 'D')
+	// {
+	// 	game->frame.hit = 1;
+	// 	game->frame.hit_value = 'D';
+	// }
 
 int	ft_raycasting_dda(t_game *game)
 {

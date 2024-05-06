@@ -6,7 +6,7 @@
 #    By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:38:15 by lquehec           #+#    #+#              #
-#    Updated: 2024/05/02 16:57:05 by lquehec          ###   ########.fr        #
+#    Updated: 2024/05/06 16:30:33 by lquehec          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -261,6 +261,10 @@ libft:
 mlx:
 			@$(MAKE_MLX)
 
+norm:
+	@norminette $(SRCS) $(INC_PATH) | grep -v "OK!" && echo "${RED}NORM KO${END}" || echo "${GREEN}NORM OK${END}"
+
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re libft mlx
+.PHONY: all clean fclean re libft mlx norm

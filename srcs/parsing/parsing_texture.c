@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:41:03 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:48:50 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:20:05 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ int	ft_parsing_texture(t_game *game, char *buffer)
 	if (!ft_strncmp(buffer, "EA ", 3) && !(game->parsing.step & PARSING_EA))
 		return (load_texture(game, buffer + 2, \
 			&game->textures.wall_ea, PARSING_EA));
-	if (!ft_strncmp(buffer, "E ", 2) && !(game->parsing.step & PARSING_E))
-		return (load_texture(game, buffer + 1, \
-			&game->textures.ennemy, PARSING_E));
-	if (!ft_strncmp(buffer, "D ", 2) && !(game->parsing.step & PARSING_D))
-		return (load_texture(game, buffer + 1, \
-			&game->textures.door, PARSING_D));
 	return (0);
 }
+
+	// if (!ft_strncmp(buffer, "D ", 2) && !(game->parsing.step & PARSING_D))
+	// 	return (load_texture(game, buffer + 1,
+	// 		&game->textures.door, PARSING_D));
+	// if (!ft_strncmp(buffer, "E ", 2) && !(game->parsing.step & PARSING_E))
+	// 	return (load_texture(game, buffer + 1,
+	// 		&game->textures.ennemy, PARSING_E));

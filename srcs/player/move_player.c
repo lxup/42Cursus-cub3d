@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 09:54:25 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/02 16:56:09 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:03:10 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,49 @@
 
 static int	ft_move_player_up(t_game *game, t_player *player, double speed)
 {
-	if (ft_move_collision(game, player, speed, M_UP))
-		return (0);
-	player->pos.x += player->dir.x * speed;
-	player->pos.y += player->dir.y * speed;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x + player->dir.x * speed;
+	new_pos.y = player->pos.y + player->dir.y * speed;
+	is_blocking(game, &new_pos);
+	player->pos.x = new_pos.x;
+	player->pos.y = new_pos.y;
 	return (1);
 }
 
 static int	ft_move_player_down(t_game *game, t_player *player, double speed)
 {
-	if (ft_move_collision(game, player, speed, M_DOWN))
-		return (0);
-	player->pos.x -= player->dir.x * speed;
-	player->pos.y -= player->dir.y * speed;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x - player->dir.x * speed;
+	new_pos.y = player->pos.y - player->dir.y * speed;
+	is_blocking(game, &new_pos);
+	player->pos.x = new_pos.x;
+	player->pos.y = new_pos.y;
 	return (1);
 }
 
 static int	ft_move_player_left(t_game *game, t_player *player, double speed)
 {
-	if (ft_move_collision(game, player, speed, M_LEFT))
-		return (0);
-	player->pos.x += player->dir.y * speed;
-	player->pos.y -= player->dir.x * speed;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x + player->dir.y * speed;
+	new_pos.y = player->pos.y - player->dir.x * speed;
+	is_blocking(game, &new_pos);
+	player->pos.x = new_pos.x;
+	player->pos.y = new_pos.y;
 	return (1);
 }
 
 static int	ft_move_player_right(t_game *game, t_player *player, double speed)
 {
-	if (ft_move_collision(game, player, speed, M_RIGHT))
-		return (0);
-	player->pos.x -= player->dir.y * speed;
-	player->pos.y += player->dir.x * speed;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x - player->dir.y * speed;
+	new_pos.y = player->pos.y + player->dir.x * speed;
+	is_blocking(game, &new_pos);
+	player->pos.x = new_pos.x;
+	player->pos.y = new_pos.y;
 	return (1);
 }
 

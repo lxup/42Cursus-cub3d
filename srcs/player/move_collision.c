@@ -6,47 +6,25 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:00:21 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/02 16:49:47 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:03:41 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	is_blocking(t_game *game, t_coord pos)
+void	is_blocking(t_game *game, t_coord *pos)
 {
-	if (pos.x < 0 || pos.x >= game->map.size.x || pos.y < 0 \
-		|| pos.y >= game->map.size.y)
-		return (1);
-	if (game->map.content[(int)pos.y][(int)pos.x] == '1')
-		return (1);
-	return (0);
-}
-
-int	ft_move_collision(t_game *game, t_player *player, double speed, int move)
-{
-	t_coord	new_pos;
-
-	new_pos.x = player->pos.x;
-	new_pos.y = player->pos.y;
-	if (move == M_UP)
+	if (pos->x < 0 || pos->x >= game->map.size.x || pos->y < 0 \
+		|| pos->y >= game->map.size.y)
 	{
-		new_pos.x += player->dir.x * speed;
-		new_pos.y += player->dir.y * speed;
+		pos->x = game->player.pos.x;
+		pos->y = game->player.pos.y;
 	}
-	else if (move == M_DOWN)
+	else if (game->map.content[(int)pos->y][(int)pos->x] == '1')
 	{
-		new_pos.x -= player->dir.x * speed;
-		new_pos.y -= player->dir.y * speed;
+		if (game->map.content[(int)pos->y][(int)game->player.pos.x] == '1')
+			pos->y = game->player.pos.y;
+		if (game->map.content[(int)game->player.pos.y][(int)pos->x] == '1')
+			pos->x = game->player.pos.x;
 	}
-	else if (move == M_LEFT)
-	{
-		new_pos.x += player->dir.y * speed;
-		new_pos.y -= player->dir.x * speed;
-	}
-	else if (move == M_RIGHT)
-	{
-		new_pos.x -= player->dir.y * speed;
-		new_pos.y += player->dir.x * speed;
-	}
-	return (is_blocking(game, new_pos));
 }

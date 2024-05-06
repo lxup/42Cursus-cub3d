@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:52:43 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 18:23:10 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:15:09 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ typedef struct s_vector
 	int		x;
 	int		y;
 }	t_vector;
+
+typedef struct s_minimap
+{
+	t_vector	pos;
+	t_vector	size;
+	t_vector	axe;
+}	t_minimap;
 
 typedef struct s_coord
 {

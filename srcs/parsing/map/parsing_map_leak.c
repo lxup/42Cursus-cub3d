@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:18:21 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:49:29 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:19:08 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_parsing_map_leak(t_game *game, int x, int y)
 {
-	if (game->map.content[y][x] == '0' || game->map.content[y][x] == 'D' \
+	if (game->map.content[y][x] == '0' \
 		|| ft_contains_char("NSWE", game->map.content[y][x]))
 	{
 		if (x == 0 || x == game->map.size.x - 1 || y == 0 \
@@ -37,3 +37,5 @@ int	ft_parsing_map_leak(t_game *game, int x, int y)
 		return (ft_parsing_map_leak(game, 0, y + 1));
 	return (1);
 }
+
+//  || game->map.content[y][x] == 'D'

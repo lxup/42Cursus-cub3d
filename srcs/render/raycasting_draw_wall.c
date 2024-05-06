@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:26:28 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:53:48 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:19:01 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ static int	ft_raycasting_draw_wall_verline(t_game *game, int x, int y)
 static t_image	*get_img_src_wall(t_game *game)
 {
 	if (game->frame.side == 0 && game->frame.ray_dir.x > 0)
-		return (&game->textures.wall_no);
-	if (game->frame.side == 0 && game->frame.ray_dir.x < 0)
-		return (&game->textures.wall_so);
-	if (game->frame.side == 1 && game->frame.ray_dir.y > 0)
 		return (&game->textures.wall_we);
-	if (game->frame.side == 1 && game->frame.ray_dir.y < 0)
+	if (game->frame.side == 0 && game->frame.ray_dir.x < 0)
 		return (&game->textures.wall_ea);
+	if (game->frame.side == 1 && game->frame.ray_dir.y > 0)
+		return (&game->textures.wall_no);
+	if (game->frame.side == 1 && game->frame.ray_dir.y < 0)
+		return (&game->textures.wall_so);
 	return (NULL);
 }
 
@@ -55,10 +55,10 @@ static t_image	*get_img_src(t_game *game)
 		return (get_img_src_wall(game));
 	if (game->frame.hit_value == 'E')
 		return (&game->textures.ennemy);
-	if (game->frame.hit_value == 'D')
-		return (&game->textures.door);
 	return (NULL);
 }
+	// if (game->frame.hit_value == 'D')
+	// 	return (&game->textures.door);
 
 static int	set_texture(t_game *game, t_texture *texture, t_image *img_src)
 {

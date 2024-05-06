@@ -1,10 +1,8 @@
 NO ./assets/wolfenstein/wood.xpm
-SO ./assets/wolfenstein/cave.xpm
+SO ./assets/wolfenstein/door.xpm
 WE ./assets/wolfenstein/cave.xpm
-EA ./assets/wolfenstein/wood.xpm
-E ./assets/wolfenstein/ennemy.xpm
-D ./assets/wolfenstein/door.xpm
-F 65,78,12
+EA ./assets/wolfenstein/brick.xpm
+F 65,78,12         
 C 56,56,56
 
 111     1111111111111111111111111   

@@ -11,5 +11,6 @@
 		"define.h": "c",
 		"colors.h": "c",
 		"mlx.h": "c"
-	}
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }

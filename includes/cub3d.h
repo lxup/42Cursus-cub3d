@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:43:05 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/02 16:56:54 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:03:01 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ int		ft_move_player_view_left(t_game *game, t_player *player);
 int		ft_move_player_view_right(t_game *game, t_player *player);
 int		ft_move_player_view_up(t_player *player);
 int		ft_move_player_view_down(t_player *player);
-int		ft_move_collision(t_game *game, t_player *player, double speed, \
-			int move);
+void	is_blocking(t_game *game, t_coord *pos);
 void	ft_move_speed(t_game *game, t_player *player, \
 			double *speed);
 
