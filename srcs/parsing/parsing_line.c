@@ -6,11 +6,29 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:37:01 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/06 19:17:50 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 23:32:41 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	ft_not_know_param(t_game *game, char *line)
+{
+	(void)game;
+	if (!ft_strncmp(line, "NO ", 3))
+		return (0);
+	if (!ft_strncmp(line, "SO ", 3))
+		return (0);
+	if (!ft_strncmp(line, "WE ", 3))
+		return (0);
+	if (!ft_strncmp(line, "EA ", 3))
+		return (0);
+	if (!ft_strncmp(line, "F ", 2))
+		return (0);
+	if (!ft_strncmp(line, "C ", 2))
+		return (0);
+	return (1);
+}
 
 static int	ft_parsing_error(t_game *game, char *line)
 {
@@ -55,7 +73,8 @@ int	ft_parsing_line(t_game *game, char *line)
 				&& (game->parsing.step & PARSING_WE)
 				&& (game->parsing.step & PARSING_EA)
 				&& (game->parsing.step & PARSING_F)
-				&& (game->parsing.step & PARSING_C))))
+				&& (game->parsing.step & PARSING_C)
+				&& ft_not_know_param(game, line))))
 		return (ft_parsing_map(game, line));
 	return (ft_parsing_error(game, line));
 }

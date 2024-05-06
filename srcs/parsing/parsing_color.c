@@ -6,20 +6,18 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 12:25:30 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/06 17:51:51 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 23:23:44 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	rgb_string_to_int(char **str, int previous)
+static int	rgb_string_to_int(char **str, int previous, int is_last)
 {
 	int	result;
 
-	if (previous == -1)
-		return (-1);
 	result = 0;
-	if (!*str || !**str)
+	if (previous == -1 || !*str || !**str)
 		return (-1);
 	while (ft_iswhitespace(**str))
 		*str += 1;
@@ -35,7 +33,10 @@ static int	rgb_string_to_int(char **str, int previous)
 		return (-1);
 	while (ft_iswhitespace(**str))
 		*str += 1;
-	if (**str == ',')
+	if ((**str && **str != ',' && !is_last) \
+		|| (is_last && !ft_strwhitespace(*str)))
+		return (-1);
+	if (**str == ',' && !is_last)
 		*str += 1;
 	return (result);
 }
@@ -53,9 +54,9 @@ int	ft_parsing_color(t_game *game, char *line)
 	cursor = line + 2;
 	while (*cursor == ' ' || *cursor == '\t')
 		cursor++;
-	color->r = rgb_string_to_int(&cursor, 0);
-	color->g = rgb_string_to_int(&cursor, color->r);
-	color->b = rgb_string_to_int(&cursor, color->g);
+	color->r = rgb_string_to_int(&cursor, 0, 0);
+	color->g = rgb_string_to_int(&cursor, color->r, 0);
+	color->b = rgb_string_to_int(&cursor, color->g, 1);
 	if (color->r < 0 || color->g < 0 || color->b < 0 \
 		|| color->r > 255 || color->g > 255 || color->b > 255 \
 		|| *cursor != '\0')

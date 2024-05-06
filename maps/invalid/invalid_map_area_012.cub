@@ -1,0 +1,11 @@
+
+NO ./assets/wolfenstein/wood.xpm
+SO ./assets/wolfenstein/door.xpm
+EA ./assets/wolfenstein/brick.xpm
+WE ./assets/wolfenstein/cave.xpm
+
+C 255,200,160
+F 122,122,122
+
+11
+11
