@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:56:41 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/06 17:41:51 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:28:54 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	draw_player(t_game *game, t_vector map_pos, t_vector map_size)
 	pos_player.x = map_pos.x + 5 * map_size.x / 10;
 	pos_player.y = map_pos.y + 5 * map_size.y / 10;
 	custom_mlx_draw_circle(&game->win.frame, pos_player, \
-		map_size.x / 20, 0x00FF00);
+		map_size.x / 40, 0x00FF00);
 	return (1);
 }
 

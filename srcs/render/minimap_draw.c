@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:17:16 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:57:41 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:29:17 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	minimap_player(t_game *game, t_vector map_pos, t_vector map_size)
 
 	pos.x = map_pos.x + game->player.pos.x * map_size.x / game->map.size.x;
 	pos.y = map_pos.y + game->player.pos.y * map_size.y / game->map.size.y;
-	radius = map_size.x / game->map.size.x / 2;
+	radius = map_size.x / game->map.size.x / 4;
 	custom_mlx_draw_circle(&game->win.frame, pos, radius, 0x00FF00);
 	return (1);
 }

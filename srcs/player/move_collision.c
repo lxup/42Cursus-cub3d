@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:00:21 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/06 19:03:41 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/06 19:25:30 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ void	is_blocking(t_game *game, t_coord *pos)
 			pos->y = game->player.pos.y;
 		if (game->map.content[(int)game->player.pos.y][(int)pos->x] == '1')
 			pos->x = game->player.pos.x;
+		if (game->map.content[(int)pos->y][(int)pos->x] == '1')
+		{
+			pos->x = game->player.pos.x;
+			pos->y = game->player.pos.y;
+		}
 	}
 }
