@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:03:17 by lquehec           #+#    #+#             */
-/*   Updated: 2024/03/22 17:35:09 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/07 14:08:11 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ typedef enum e_error
 /*                                GAME SETTINGS                               */
 /* ************************************************************************** */
 
-# define WINDOW_TITLE 		"cub3d"
-# define LIFE_COUNT			4
-# define MAX_WIDTH			1920
-# define MAX_HEIGHT			1080
+# define WINDOW_TITLE 			"cub3d"
+# define LIFE_COUNT				4
+# define MAX_WIDTH				1920
+# define MAX_HEIGHT				1080
+# define FOV					0.5
+# define DEFAULT_MOVE_SPEED		0.06
+# define DEFAULT_SPRINT_SPEED	0.1
+# define DEFAULT_ROT_SPEED		0.005
 
 /* ************************************************************************** */
 /*                                MAP SETTINGS                                */
