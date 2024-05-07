@@ -6,7 +6,7 @@
 /*   By: lquehec <lquehec@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:37:01 by lquehec           #+#    #+#             */
-/*   Updated: 2024/05/06 23:32:41 by lquehec          ###   ########.fr       */
+/*   Updated: 2024/05/07 20:36:23 by lquehec          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,23 @@ static int	ft_parsing_error(t_game *game, char *line)
 	// if (!ft_strncmp(line, "E ", 2) && (game->parsing.step & PARSING_E))
 	// 	return (ft_exit(game, ERR_ARGS, "Enemy texture set multiple times."));
 
+static void	skip_space(char **line)
+{
+	if (ft_strnstr(*line, "NO ", ft_strlen(*line))
+		|| ft_strnstr(*line, "SO ", ft_strlen(*line))
+		|| ft_strnstr(*line, "WE ", ft_strlen(*line))
+		|| ft_strnstr(*line, "EA ", ft_strlen(*line))
+		|| ft_strnstr(*line, "F ", ft_strlen(*line))
+		|| ft_strnstr(*line, "C ", ft_strlen(*line)))
+		while (ft_iswhitespace(**line))
+			(*line)++;
+}
+
 int	ft_parsing_line(t_game *game, char *line)
 {
 	if (*line == '\n' && !(game->parsing.step & PARSING_MAP))
 		return (1);
+	skip_space(&line);
 	if ((!ft_strncmp(line, "NO ", 3) && !(game->parsing.step & PARSING_NO))
 		|| (!ft_strncmp(line, "SO ", 3) && !(game->parsing.step & PARSING_SO))
 		|| (!ft_strncmp(line, "WE ", 3) && !(game->parsing.step & PARSING_WE))
